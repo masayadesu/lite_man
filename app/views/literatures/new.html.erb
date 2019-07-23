@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center">
+  <h1>作成</h1>
+  <div class="ml-auto literatures__linkBox">
+    <%= link_to "一覧",literatures_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+
+<%= render partial: 'form', locals:{literature: @literature} %>

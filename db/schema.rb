@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_124216) do
     t.string "publish"
     t.integer "price"
     t.string "keyword"
+    t.string "state"
     t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

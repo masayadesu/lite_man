@@ -1,0 +1,59 @@
+<table class="table text-left">
+  <div class="card-header">
+    <h4>書誌詳細</h4>
+  </div>
+  <div class="card-body text-left ">
+    <tr>
+      <th>著者</th>
+      <td><%= literature.author %></td>
+    </tr>
+    <tr>
+      <th>タイトル</th>
+      <td><%= literature.title %></td>
+    </tr>
+    <tr>
+      <th>巻号</th>
+      <td><%= literature.volume %></td>
+    </tr>
+    <tr>
+      <th>頁</th>
+      <td><%= literature.page %></td>
+    </tr>
+    <tr>
+      <th>URL</th>
+      <td><%= literature.url %></td>
+    </tr>
+    <tr>
+      <th>出版年/掲載年</th>
+      <td><%= literature.published %></td>
+    </tr>
+    <tr>
+      <th>出版社/サイト名</th>
+      <td><%= literature.publish %></td>
+    </tr>
+    <tr>
+      <th>金額</th>
+      <td><%= literature.price %></td>
+    </tr>
+    <tr>
+      <th>検索キーワード</th>
+      <td><%= literature.keyword %></td>
+    </tr>
+    <tr>
+      <th>状態</th>
+      <td><%= literature.state %></td>
+    </tr>
+    <tr>
+      <th>備考/要約</th>
+      <td><%= simple_format(literature.remarks) %></td>
+    </tr>
+    <tr>
+      <th>作成日</th>
+      <td><%= literature.created_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+      <th>更新日</th>
+      <td><%= literature.updated_at.to_s(:datetime_jp) %></td>
+    </tr>
+  </div>
+</table>

@@ -1,0 +1,9 @@
+<!-- <div class="d-flex align-items-center mt-4 mb-4"> -->
+<div class="d-flex align-items-center">
+  <div class="ml-auto literatures__linkBox">
+    <%= link_to "一覧", literatures_path, class: 'btn btn-outline-dark' %>
+    <%= link_to "編集", edit_literature_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<%= render partial: 'literature', object: @literature %>
