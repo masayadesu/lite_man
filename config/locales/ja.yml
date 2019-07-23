@@ -1,14 +1,18 @@
-# ja:
-#   view:
-#     pagination:
-#       First: 最初
-#       Last: 最後
-#       Previous: 前
-#       Next: 次
-#       trucate: ...
-
-
 ja:
+  activerecord:
+    attributes:
+      literature:
+        author: 著者
+        title: タイトル
+        volume: 巻号
+        page: 頁
+        url: URL
+        published: 出版年/掲載年
+        publish: 出版社/サイト名
+        price: 金額
+        keyword: 検索キーワード
+        state: 状態
+        remarks: 備考/要約
   views:
     pagination:
       first: '最初'

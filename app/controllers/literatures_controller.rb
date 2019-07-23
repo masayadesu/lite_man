@@ -10,7 +10,7 @@ class LiteraturesController < ApplicationController
   end
 
   def new
-    @literature = Literature.new
+    @literature = Literature.new(flash[:notce])
   end
 
   def edit
@@ -19,8 +19,14 @@ class LiteraturesController < ApplicationController
   def create
     literature = Literature.create(literature_params)
     # binding.pry
-    flash[:notice] = "文献を追加しました"
-    redirect_to literature
+    if literature.save
+      flash[:notice] = "文献を追加しました"
+      redirect_to literature
+    else
+      redirect_back(fallback_location: edit_literature_path(literature),
+      flash: {literature: literature, error_messages: literature.errors.full_messages }
+      )
+
   end
 
   def update
