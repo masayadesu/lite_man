@@ -1,0 +1,18 @@
+# ja:
+#   view:
+#     pagination:
+#       First: 最初
+#       Last: 最後
+#       Previous: 前
+#       Next: 次
+#       trucate: ...
+
+
+ja:
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'

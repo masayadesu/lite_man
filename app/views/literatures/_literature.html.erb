@@ -1,8 +1,8 @@
 <table class="table text-left">
   <div class="card-header">
-    <h4>書誌詳細</h4>
+    <h4>文献詳細</h4>
   </div>
-  <div class="card-body text-left ">
+  <div class="card-body ">
     <tr>
       <th>著者</th>
       <td><%= literature.author %></td>
@@ -21,7 +21,7 @@
     </tr>
     <tr>
       <th>URL</th>
-      <td><%= literature.url %></td>
+      <td><%= link_to "#{literature.url}","#{literature.url}" %></td>
     </tr>
     <tr>
       <th>出版年/掲載年</th>

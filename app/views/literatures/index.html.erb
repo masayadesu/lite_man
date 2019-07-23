@@ -5,6 +5,9 @@
       <%= link_to "新規作成", new_literature_path, class: "btn btn-outline-dark" %>
     </div>
 </div>
+<% if flash[:notice] %>
+  <div class="alert alert-danger"><%= flash[:notice] %></div>
+<% end %>
 <table class="table table-hover literatures__table">
   <thead class="thead-dark">
     <tr>
@@ -29,27 +32,26 @@
       <th>更新日</th> -->
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @literatures.each do |literature| %>
       <tr>
-        <td><%= literature.author %></td>
-        <td><%= literature.title %></td>
+        <td><%= literature.author.truncate(30) %></td>
+        <td><%= literature.title.truncate(30) %></td>
         <td><%= literature.volume %></td>
         <td><%= literature.page %></td>
-        <td><%= literature.url %></td>
+        <td><%= link_to "#{literature.url.truncate(30)}","#{literature.url}" %></td>
         <td><%= literature.published %></td>
         <td><%= literature.publish %></td>
         <td><%= literature.price %></td>
         <td><%= literature.state %></td>
         <td><%= literature.keyword %></td>
-        <td><%= literature.remarks %></td>
-        <!-- <td><%#= literature.created_at.to_s(:datetime_jp) %></td>
-        <td><%#= literature.updated_at.to_s(:datetime_jp) %></td> -->
+        <td><%= literature.remarks.truncate(10) %></td>
 
         <td><%= link_to '詳細', literature, class: 'btn btn-outline-dark' %></td>
-        <!-- <td><%#= link_to '編集', Edit_literature_path(literature) %></td> -->
+        <td><%= link_to '編集', edit_literature_path(literature), class: 'btn btn-outline-dark'%></td>
         <td><%= link_to '削除', literature,class: 'btn btn-outline-dark',
            method: :delete, data: { confirm: 'Are U sure?' } %></td>
 
@@ -58,3 +60,4 @@
     <%  end %>
   </tbody>
 </table>
+<%= paginate @literatures %>

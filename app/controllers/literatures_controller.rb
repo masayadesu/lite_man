@@ -3,7 +3,7 @@ class LiteraturesController < ApplicationController
 
 
   def index
-    @literatures = Literature.all
+    @literatures = Literature.page(params[:page])
   end
 
   def show
@@ -18,6 +18,8 @@ class LiteraturesController < ApplicationController
 
   def create
     literature = Literature.create(literature_params)
+    # binding.pry
+    flash[:notice] = "文献を追加しました"
     redirect_to literature
   end
 
@@ -28,14 +30,14 @@ class LiteraturesController < ApplicationController
 
   def destroy
     @literature.destroy
-    # binding.pry
+
     redirect_to literatures_path
   end
 
   private
   def literature_params
-    params.require(:literature).permit(
-      :author, :title, :volume, :page, :url, :published, :publish, :price, :keyword, :state, :remarks)
+    params.require(:literature).permit(:id, :author, :title, :volume, :page, :url,
+       :published, :publish, :price, :keyword, :state, :remarks)
   end
   def set_target_literature
     @literature = Literature.find(params[:id])
