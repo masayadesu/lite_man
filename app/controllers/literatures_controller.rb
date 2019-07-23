@@ -26,6 +26,7 @@ class LiteraturesController < ApplicationController
       redirect_back(fallback_location: edit_literature_path(literature),
       flash: {literature: literature, error_messages: literature.errors.full_messages }
       )
+    end
 
   end
 
