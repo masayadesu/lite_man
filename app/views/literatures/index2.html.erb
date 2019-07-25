@@ -1,9 +1,11 @@
 <h1>文献一覧</h1>
 <div class="d-flex align-items-center">
-
-  <%= form_with(url: :search_literatures, method: :get, local: true) do  %>
-    <%= text_field_tag "q", params[:q] %>
-    <%= submit_tag '検索', class: "btn btn-outline-info btn-sm" %> <%= link_to 'Clear', literatures_path %> 
+  <!-- <h1>文献一覧</h1> -->
+  <%# <%= form_with(url: literatures_path, method: :get, local: true) do  |form| %> %>
+  <%= form_tag :search_literatures, method: :get, class:"serach" do %>
+    <!--<%# = form.label(:author,'検索' ) %>-->
+    <%= text_field_tag "q",params[:q] %>
+    <%= submit_tag 'Search', class: "btn btn-outline-info btn-sm" %> <%= link_to 'Clear', literatures_path %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
@@ -18,17 +20,25 @@
 <table class="table table-hover literatures__table">
   <thead class="thead-light">
     <tr>
+       <!-- <th>ID</th> -->
       <th>著者</th>
+      <!-- <th>タイトル/論文/記事名</th> -->
       <th>タイトル</th>
       <th>巻号</th>
       <th>頁</th>
       <th>URL</th>
+      <!-- <th>出版年/掲載年</th> -->
       <th>出版年</th>
-      <th>出版社/サイト名</th>
+      <th>出版社/サイト</th>
+      <!-- <th>出版社</th> -->
       <th>金額</th>
       <th>状態</th>
+      <!-- <th>検索キーワード</th> -->
       <th>キーワード</th>
+      <!-- <th>備考/要約</th>ｓ -->
       <th>備考/要約</th>
+      <!-- <th>作成日</th>
+      <th>更新日</th> -->
       <th></th>
       <th></th>
       <th></th>
