@@ -1,9 +1,9 @@
-<h1>文献一覧</h1>
+<h4>文献一覧</h4>
 <div class="d-flex align-items-center">
 
   <%= form_with(url: :search_literatures, method: :get, local: true) do  %>
     <%= text_field_tag "q", params[:q] %>
-    <%= submit_tag '検索', class: "btn btn-outline-info btn-sm" %> <%= link_to 'Clear', literatures_path %> 
+    <%= submit_tag '検索', class: "btn btn-outline-info btn-sm" %> <%= link_to 'Clear', literatures_path %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
