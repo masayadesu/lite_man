@@ -1,33 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">My 集合知</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark header">
+  <div class="container">
+    <%= link_to "My 集合知", "#", class: 'navbar-brand ' %>
+    <!-- <div class="collapse navbar-collapse" > -->
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
+        <% if !@current_user %>
+        <li class="nav-item">
+          <%= link_to "一覧", "#", class: 'nav-link' %>
+        </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to "About", "#", class: 'nav-link' %>
+        </li>
+      </ul>
 
-      <li class="nav-item">
-        <%= link_to 'ホーム', root_path %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  '文献一覧', literatures_path %>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ユーザー
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if @current_user %>
-            <%= link_to 'マイページ', mypage_path, class: 'dropdown-item' %>
-            <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
+      <ul class="navbar-nav ">
+          <% if !@current_user %>
+            <li class="nav-item">
+              <%= link_to '****様', "#", class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', "#", method: :delete, class: 'nav-link' %>
+            </li>
           <% else %>
-            <%= link_to '登録', new_user_path, class: 'dropdown-item' %>
-            <%= link_to 'ログイン', root_path, class: 'dropdown-item' %>
+            <li class="nav-item">
+              <%= link_to '登録', "#", class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログイン', "#", class: 'nav-link' %>
+            </li>
           <% end %>
-        </div>
-      </li>
-    </ul>
-  </div>
+      </ul>
+    </div>
+  <!-- </di
+  v> -->
 </nav>

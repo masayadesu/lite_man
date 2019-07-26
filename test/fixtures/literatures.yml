@@ -4,16 +4,16 @@
 #
 #  id         :bigint           not null, primary key
 #  author     :string
-#  title      :string
-#  volume     :string
-#  page       :integer
-#  url        :text
-#  published  :date
-#  publish    :string
-#  price      :integer
 #  keyword    :string
-#  state      :string
+#  page       :integer
+#  price      :integer
+#  publish    :string
+#  published  :text
 #  remarks    :string
+#  state      :string
+#  title      :string
+#  url        :text
+#  volume     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

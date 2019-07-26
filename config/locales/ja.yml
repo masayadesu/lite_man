@@ -13,6 +13,10 @@ ja:
         keyword: 検索キーワード
         state: 状態
         remarks: 備考/要約
+      user:
+        name: ユーザ名
+        password: パスワード
+        password_confirmation: パスワード（確認）  
   views:
     pagination:
       first: '最初'

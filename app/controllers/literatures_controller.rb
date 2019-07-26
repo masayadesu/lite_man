@@ -8,8 +8,9 @@ class LiteraturesController < ApplicationController
   end
 
   def search
-    @literatures = Literature.search(params[:q])
-    @literatures = @literatures.page(params[:page])
+    # @literatures = Literature.search(params[:q])
+    # @literatures = @literatures.page(params[:page])
+    @literatures = Literature.search(params[:q]).page(params[:page])
     render "index"
   end
 
