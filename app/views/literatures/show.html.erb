@@ -6,8 +6,16 @@
   <div class="ml-auto literatures__linkBox">
     <%= link_to "一覧", literatures_path, class: 'btn btn-outline-dark' %>
     <%= link_to "編集", edit_literature_path, class: 'btn btn-outline-dark' %>
+    <td><%= link_to '削除', @literature,class: 'btn btn-outline-danger ',
+       method: :delete, data: { confirm: 'Are U sure?' } %></td>
   </div>
 </div>
 
 <%#= render partial: 'literature', object: @literature %>
 <%= render  @literature %>
+
+<div class="ml-auto literatures__linkBox">
+  <%= link_to "一覧", literatures_path, class: 'btn btn-outline-dark' %>
+  <%= link_to "編集", edit_literature_path, class: 'btn btn-outline-dark' %>
+
+</div>

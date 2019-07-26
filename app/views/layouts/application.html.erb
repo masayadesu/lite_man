@@ -10,11 +10,16 @@
   </head>
 
   <body>
-    <%= render "header"%>
-
-
-    <div class="container-fluid">
+    <header>
+      <%= render "header"%>
+    </header>
+    <main class="container-fluid">
+    <!-- <div class="container"> -->
       <%= yield %>
-    </div>
+    <!-- </div> -->
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>

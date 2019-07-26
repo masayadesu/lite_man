@@ -25,8 +25,8 @@ if Rails.env == "development"
 
 
 url = ["https://www.amazon.co.jp/","https://www.oreilly.co.jp/index.shtml",""]
-keyword = ["宇宙","ruby","rails","neko","自動化 AI"]
-state = ["読了","読中","未読","購入希望"]
+keyword = ["宇宙","ruby","rails","Let's Groove","自動化 AI","Relight My Fire","September"]
+state = ["読了","読中","未読","積読","購入希望"]
 
   (4..50).each do |i|
     Literature.create(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
