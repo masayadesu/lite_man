@@ -21,7 +21,7 @@ if Rails.env == "development"
 
   Literature.create(author: "加藤 保子 友松 滋夫", title: "バナナの熟成に関する研究", volume: "8", page: "",
                     url: "http://hdl.handle.net/11334/1034", published: "1973-6", publish: "東海学園女子短期大学", price: "",
-                    keyword: "バナナ 色調 変化 研究" , state: "未読", remarks: "")
+                    keyword: "バナナ 色調 変化 研究" , state: "味読", remarks: "")
 
 
 url = ["https://www.amazon.co.jp/","https://www.oreilly.co.jp/index.shtml",""]
@@ -30,7 +30,7 @@ state = ["読了","読中","未読","積読","購入希望"]
 
   (4..50).each do |i|
     Literature.create(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
-                      url: "#{url.sample}", published: "#{i}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
+                      url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}")
   end
 end

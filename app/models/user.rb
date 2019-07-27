@@ -2,10 +2,11 @@
 #
 # Table name: users
 #
-#  id         :bigint           not null, primary key
-#  name       :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :bigint           not null, primary key
+#  name            :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #
@@ -14,13 +15,13 @@
 
 class User < ApplicationRecord
   has_secure_password
-  validate :name,
+  validates :name,
     presence: true,
     uniqueness: true,
-    length: {maximum: 20}
-    # format: {
-    #   with: /\A[a-z0-9]+\z/,
-    #   message: 'は小文字英数字で入力してください'
-    # }
-     validates :password, length: { minimum: 8}
+    length: {maximum: 20},
+    format: {
+      with: /\A[a-z0-9]+\z/,
+      message: 'は小文字英数字で入力してください'
+    }
+  validates :password, length: { minimum: 8}
 end

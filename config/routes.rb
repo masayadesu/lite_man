@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # get "literatures/index"
 
-  # root 'home/index'
+  root 'home#index'
   resources :users, only: %i[new create]
   resources :literatures do
     get "search", on: :collection

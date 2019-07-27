@@ -19,20 +19,21 @@ ActiveRecord::Schema.define(version: 2019_07_25_112340) do
     t.string "author"
     t.string "title"
     t.string "volume"
-    t.integer "page"
+    t.string "page"
     t.text "url"
-    t.text "published"
+    t.string "published"
     t.string "publish"
     t.integer "price"
     t.string "keyword"
     t.string "state"
-    t.string "remarks"
+    t.text "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_users_on_name", unique: true

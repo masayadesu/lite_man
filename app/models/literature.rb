@@ -5,11 +5,11 @@
 #  id         :bigint           not null, primary key
 #  author     :string
 #  keyword    :string
-#  page       :integer
+#  page       :string
 #  price      :integer
 #  publish    :string
-#  published  :text
-#  remarks    :string
+#  published  :string
+#  remarks    :text
 #  state      :string
 #  title      :string
 #  url        :text
