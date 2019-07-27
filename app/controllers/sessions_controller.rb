@@ -3,9 +3,14 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      redirect_to mypage_path
+      flash[:notice] = "ログインしました"
+
+      # redirect_to mypage_path
+      redirect_to literatures_path
+      # binding.pry
     else
-      render 'home/index'
+      flash[:error_messages] = "ユーザー名またはパスワードが間違っています"
+      redirect_back fallback_location: user
     end
   end
 
