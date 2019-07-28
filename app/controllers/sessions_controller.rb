@@ -3,9 +3,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      flash[:notice] = "ログインしました"
-
-      # redirect_to mypage_path
+      flash[:notice] = "ログインしました"      
       redirect_to literatures_path
       # binding.pry
     else
@@ -16,6 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    # flash[:notice] = "ログアウトしました"
     redirect_to root_path
   end
 end
