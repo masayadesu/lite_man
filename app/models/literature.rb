@@ -16,6 +16,7 @@
 #  volume     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 
 class Literature < ApplicationRecord
@@ -30,21 +31,25 @@ class Literature < ApplicationRecord
   validates :keyword,length:{maximum: 50}
   validates :state,length:{maximum: 10}
   validates :remarks,length:{maximum: 5000}
+  validates :user_id, {presence: true}
 
   # scope :search_literature, -> { where('author LIKE ? OR title LIKE ? publish LIKE ?  LIKE ? state LIKE ? remarks LIKE ?',
   #    "%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%") }
 
   class << self
-  def search(query)
-    rel = order(updated_at: "DESC")
-    if query.present?
-      rel = rel.where(
-      "author LIKE ? OR title LIKE ? OR url LIKE ? OR published LIKE ? OR publish LIKE ? OR keyword LIKE ? OR state LIKE ? OR remarks LIKE ?",
-      "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+    def search(query)
+      rel = order(updated_at: "DESC")
+      if query.present?
+        rel = rel.where(
+        "author LIKE ? OR title LIKE ? OR url LIKE ? OR published LIKE ? OR publish LIKE ? OR keyword LIKE ? OR state LIKE ? OR remarks LIKE ?",
+        "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+      end
+      rel
     end
-    rel
   end
-end
 
+  def user
+    return User.find_by(id: self.user_id)
+  end
 
 end

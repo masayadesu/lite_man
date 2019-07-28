@@ -1,7 +1,8 @@
 class LiteraturesController < ApplicationController
   before_action :set_target_literature, only: %i[show edit update destroy]
   before_action :authenticate_user
-
+  # before_action :ensure_correct_user, only: %i[edit, update, destroy]}
+  # before_action :ensure_correct_user
 
   def index
       @literatures = Literature.order(:id).page(params[:page])
@@ -27,6 +28,7 @@ class LiteraturesController < ApplicationController
 
   def create
     literature = Literature.create(literature_params)
+    # literature = Literature.create(literature_params,user_id: @current_user.id)
     # binding.pry
     if literature.save
       flash[:notice] = "文献を追加しました"
@@ -58,11 +60,20 @@ class LiteraturesController < ApplicationController
 
   private
   def literature_params
-    params.require(:literature).permit(:id, :author, :title, :volume, :page, :url, :published, :publish, :price, :keyword, :state, :remarks)
+    params.require(:literature).permit(:id, :author, :title, :volume, :page, :url, :published,
+       :publish, :price, :keyword, :state, :remarks, :user_id)
   end
   def set_target_literature
     @literature = Literature.find(params[:id])
   end
+
+  # def ensure_correct_user
+  #   @literature = Literatue.find_by(id: params[:id])
+  #   if @literature.user_id != @current_user.id
+  #     flash[:notice] = "権限がありません"
+  #     redirect_to login_path
+  #   end
+  # end
 
 
 end
