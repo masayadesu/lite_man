@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only: %i[index, show, edit, update]}
+  before_action :authenticate_user, {only: %i[index, show, edit, update, me]}
 
 
   def new

@@ -1,6 +1,9 @@
 class LiteraturesController < ApplicationController
-  before_action :set_target_literature, only: %i[show edit update destroy]
   before_action :authenticate_user
+  # before_action :current_user
+
+  before_action :set_target_literature, only: %i[show edit update destroy]
+
   # before_action :ensure_correct_user, only: %i[edit, update, destroy]}
   # before_action :ensure_correct_user
 
@@ -61,7 +64,8 @@ class LiteraturesController < ApplicationController
   private
   def literature_params
     params.require(:literature).permit(:id, :author, :title, :volume, :page, :url, :published,
-       :publish, :price, :keyword, :state, :remarks, :user_id)
+       :publish, :price, :keyword, :state, :remarks)
+       # :publish, :price, :keyword, :state, :remarks, :user_id)
   end
   def set_target_literature
     @literature = Literature.find(params[:id])

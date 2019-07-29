@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
+  before_action :forbid_login_user , {only: %i[create]}
+
   def create
     user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      flash[:notice] = "ログインしました"      
+      flash[:notice] = "ログインしました"
       redirect_to literatures_path
       # binding.pry
     else
@@ -16,5 +18,12 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     # flash[:notice] = "ログアウトしました"
     redirect_to root_path
+  end
+
+  def forbid_login_user
+    if @current_user
+      flash[:notice] = "すでにログインしています"
+      redirect_to literatures_path
+    end
   end
 end

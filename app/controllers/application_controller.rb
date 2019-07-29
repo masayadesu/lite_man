@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :current_user
-  
+
   private
   def current_user
     return unless session[:user_id]
@@ -9,9 +9,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-  if @current_user == nil
-    flash[:notice] = "ログインが必要です"
-    redirect_to root_path
+    if @current_user == nil
+      flash[:error_messages] = "ログインが必要です"
+      redirect_to root_path
+    end
   end
-end
+
+  
+
 end
