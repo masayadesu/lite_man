@@ -1,0 +1,21 @@
+<h1>会員一覧</h1>
+  <% if @users.present? %>
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>ユーザ名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>会員情報がありません</p>
+  <% end %>

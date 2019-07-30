@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, {only: %i[index, show, edit, update, me]}
 
+  def index
+    @users = User.order("id")
+  end
 
   def new
     @user = User.new(flash[:user])

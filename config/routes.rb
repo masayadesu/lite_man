@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users, only: %i[new create]
+  # resources :users, only: %i[new create]
+  resources :users
   resources :literatures do
     get "search", on: :collection
   end
