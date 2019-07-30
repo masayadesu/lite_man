@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  private
   def forbid_login_user
     if @current_user
       flash[:notice] = "すでにログインしています"

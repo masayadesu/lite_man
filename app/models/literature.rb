@@ -20,6 +20,8 @@
 #
 
 class Literature < ApplicationRecord
+  belongs_to :user
+
   validates :author,length:{maximum: 50}
   validates :title,length:{maximum: 100}
   validates :volume,length:{maximum: 10}
@@ -31,7 +33,7 @@ class Literature < ApplicationRecord
   validates :keyword,length:{maximum: 50}
   validates :state,length:{maximum: 10}
   validates :remarks,length:{maximum: 5000}
-  # validates :user_id, {presence: true}
+  validates :user_id, {presence: true}
 
   # scope :search_literature, -> { where('author LIKE ? OR title LIKE ? publish LIKE ?  LIKE ? state LIKE ? remarks LIKE ?',
   #    "%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%") }
