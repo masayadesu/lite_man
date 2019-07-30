@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     @users = User.order("id")
   end
 
+  def search
+    @users = User.search(params[:q]).page(params[:page])
+    render "index"
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new(flash[:user])
   end
