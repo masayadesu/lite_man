@@ -26,14 +26,14 @@ class User < ApplicationRecord
       with: /\A[a-z0-9]+\z/,
       message: 'は小文字英数字で入力してください'
     }
-    validates :email,
-      presence: true,
-      uniqueness: { case_sensitive: true },
-      length: {maximum: 50},
-      format: {
-        with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
-        message: 'で入力してください'
-      }
+  validates :email,
+    presence: true,
+    uniqueness: { case_sensitive: true },
+    length: {maximum: 50},
+    format: {
+      with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+      # message: 'Emailの書式が不正です'
+    }
   validates :password, length: { minimum: 6}, on: :create
   validates :password, length: { minimum: 6}, on: :update, allow_blank: true
 

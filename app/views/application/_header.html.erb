@@ -17,13 +17,13 @@
       <ul class="navbar-nav">
           <% if @current_user %>
             <li class="nav-item">
-              <%= menu_link_to "#{@current_user.name}さん", mypage_path, class: 'nav-link' %>
+              <%= menu_link_to "#{@current_user.name}さん", @current_user, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= menu_link_to '文献一覧', literatures_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= menu_link_to 'ユーザー名簿', :users, class: 'nav-link' %>
+              <%= menu_link_to 'ユーザー名簿', users_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= menu_link_to '管理ページ', "#", class: 'nav-link' %>

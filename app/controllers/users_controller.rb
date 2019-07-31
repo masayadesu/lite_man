@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @user = User.find_by(id: params[:id])
   end
 
   def new
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   end
   def edit
     @user = User.find(params[:id])
+    # @user = User.find_by(id: params[:id])
   end
 
   def create
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
       redirect_to literatures_path
     else
       flash[:error_messages] = user.errors.full_messages
+      # binding.pry
       redirect_back fallback_location: user
 
     end
