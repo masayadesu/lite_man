@@ -7,9 +7,9 @@
   </div>
 </div>
 
-<% if flash[:notice] %>
-  <div class="alert alert-primary"><%= flash[:notice] %></div>
-<% end %>
+<%# if flash[:notice] %>
+  <!-- <div class="alert alert-primary"><%#= flash[:notice] %></div> -->
+<%# end %>
 
 <table class="table text-left">
   <div class="card-header">
@@ -33,5 +33,4 @@
         <td><%= @user.administrator? ? "○": "-" %></td>
       </tr>
     </div>
-  </div>
 </table>

@@ -30,9 +30,25 @@ class UsersController < ApplicationController
     else
       flash[:error_messages] = user.errors.full_messages
       redirect_back fallback_location: user
+
+    end
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.assign_attributes(user_params)
+    # binding.pry
+    if @user.save
+      redirect_to @user, notice: "ユーザー情報を編集しました"
+      # binding.pry
+    else
+      flash[:error_messages] = user.errors.full_messages
+      render "edit"
       # binding.pry
     end
   end
+
+
 
   def me
   end

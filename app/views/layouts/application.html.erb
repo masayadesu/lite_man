@@ -15,7 +15,10 @@
     </header>
     <main class="container-fluid">
     <!-- <div class="container"> -->
-      <%= yield %>
+      <% if flash[:notice] %>
+        <div class="alert alert-primary"><%= flash[:notice] %></div>
+      <% end %>
+        <%= yield %>
     <!-- </div> -->
     </main>
     <footer>
