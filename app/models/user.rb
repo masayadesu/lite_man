@@ -34,7 +34,8 @@ class User < ApplicationRecord
         with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
         message: 'で入力してください'
       }
-  validates :password, length: { minimum: 8}
+  validates :password, length: { minimum: 6}, on: :create
+  validates :password, length: { minimum: 6}, on: :update, allow_blank: true
 
   class << self
     def search(query)

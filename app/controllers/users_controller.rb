@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.assign_attributes(user_params)
+    # @user.update_attributes(user_params)
     # binding.pry
     if @user.save
       redirect_to @user, notice: "ユーザー情報を編集しました"
