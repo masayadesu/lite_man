@@ -12,20 +12,25 @@
         <tr>
           <th>ID</th>
           <th>ユーザ名</th>
+          <th>email</th>
+          <th>管理者</th>
           <th></th>
           <th></th>
           <th></th>
+
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
-          <tr clsss="float-light">
+          <tr>
             <td><%= user.id %></td>
             <td><%= user.name %></td>
-            <td><%= link_to '詳細', user, class: 'btn btn-outline-dark btn-sm ' %></td>
-            <td><%= link_to "編集", edit_user_path(user), class: 'btn btn-outline-dark btn-sm ' %></td>
+            <td><%= user.email %></td>
+            <td><%= user.administrator %></td>
+            <td><%= link_to '詳細', user, class: 'btn btn-outline-dark btn-sm' %></td>
+            <td><%= link_to "編集", edit_user_path(user), class: 'btn btn-outline-dark btn-sm' %></td>
             <td><%= link_to "削除", user, method: :delete, data:{confirm: "本当に削除しますか？ "},
-              class: 'btn btn-outline-danger btn-sm '%></td>
+              class: 'btn btn-outline-danger btn-sm'%></td>
           </tr>
         <% end %>
       </tbody>
