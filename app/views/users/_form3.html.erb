@@ -18,7 +18,8 @@
   </div>
 
   <div class="form-group">
-    <%#= form.check_box :administrator, {}, "off" %>
-    <%= form.check_box :administrator %>
-    <%= form.label :administrator, "管理者"  %>
+    <% if controller.kind_of?(UsersController) %>
+      <%= form.check_box :administrator,  disabled: !@current_user.administrator? %>
+      <%= form.label :administrator, "管理者"  %>
+    <% end %>
   </div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'home#index'
   # root 'home#top'
 
-  # resources :users, only: %i[new create]
+  resource :account, only: %i[show edit update]
   resources :users do
     get "search", on: :collection
   end
