@@ -18,10 +18,10 @@
   </div>
 
   <div class="form-group">
-    <% if controller.kind_of?(AccountsController) %>
-      <% %>
-    <% elsif  %>
-      <%= form.check_box :administrator,  disabled: !@user.administrator? %>
-      <%= form.label :administrator, "管理者"  %>
+    <%= form.label :administrator, "管理者"  %>
+    <% if controller.kind_of?(UsersController) %>
+      <%= form.check_box :administrator, disabled: true %>
+    <% else %>
+      <%= form.check_box :administrator %>
     <% end %>
   </div>
