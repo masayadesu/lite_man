@@ -35,7 +35,10 @@ class User < ApplicationRecord
       # message: 'Emailの書式が不正です'
     }
   validates :password, length: { minimum: 6}, on: :create
-  validates :password, length: { minimum: 6}, on: :update, allow_blank: true
+  # validates :password, length: { minimum: 6}, on: :update, allow_blank: true
+
+  attr_accessor :current_password
+  validates :password, presence: { if: :current_password }
 
   class << self
     def search(query)

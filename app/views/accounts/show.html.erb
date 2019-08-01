@@ -1,8 +1,8 @@
-<h1>マイアカウント</h1>
-<div class="ml-auto float-right">
+<h2>マイアカウント</h2>
+<ul class="ml-auto float-right">
   <%#= link_to "アカウント情報の編集", edit_account_path %>
-  <%= link_to "アカウント情報の編集", :edit_account %>
-  <%#= menu_link_to "パスワードの変更", :edit_password %>
-</div>
+  <%= menu_link_to "アカウント情報の編集", :edit_account %>
+  <%= menu_link_to "パスワードの変更", :edit_password %>
+</ul>
 
 <%= render "users/body", locals: { user: @user } %>

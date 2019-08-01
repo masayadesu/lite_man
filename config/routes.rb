@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # root 'home#top'
 
   resource :account, only: %i[show edit update]
+  resource :password, only: %i[show edit update]
   resources :users do
     get "search", on: :collection
   end
