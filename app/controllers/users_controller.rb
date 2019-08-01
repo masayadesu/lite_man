@@ -51,6 +51,11 @@ class UsersController < ApplicationController
       # binding.pry
     end
   end
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    redirect_to @user, notice: "ユーザーを削除しました"
+  end
 
 
 

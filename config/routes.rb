@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
 
-  # get "literatures/index"
-
+  #
   root 'home#index'
+  # root 'home#top'
 
   # resources :users, only: %i[new create]
   resources :users do
