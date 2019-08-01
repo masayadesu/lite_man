@@ -1,7 +1,5 @@
 class LiteraturesController < ApplicationController
   before_action :authenticate_user
-
-
   before_action :set_target_literature, only: %i[show edit update destroy]
 
   # before_action :ensure_correct_user, only: %i[edit, update, destroy]}
