@@ -20,7 +20,7 @@
 #
 
 class Literature < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true 
 
   validates :author,length:{maximum: 50}
   validates :title,length:{maximum: 100}
