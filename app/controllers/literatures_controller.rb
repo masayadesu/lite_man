@@ -1,13 +1,17 @@
 class LiteraturesController < ApplicationController
   before_action :authenticate_user
   before_action :set_target_literature, only: %i[show edit update destroy]
-
+  # before_action :correct_user
   # before_action :ensure_correct_user, only: %i[edit, update, destroy]}
-  # before_action :ensure_correct_user
+
 
   def index
       @literatures = Literature.order(:id).page(params[:page])
-      # @literatures = Literature.page(params[:page])
+      # @literatures = Literature.order(:id).page(params[:page])
+      # literature = Literature.where(:current_user)
+      #
+      # @literatures = Literature.where(:current_user).page(params[:page])
+
   end
 
   def search
@@ -68,11 +72,10 @@ class LiteraturesController < ApplicationController
   def set_target_literature
     @literature = Literature.find(params[:id])
   end
-
-
-
-  # def ensure_correct_user
+  # def correct_user
   #   @literature = Literatue.find_by(id: params[:id])
+  #   biding.pry
+  #   # @literature = Literatue.find_by(user_id: params[:user_id])
   #   if @literature.user_id != @current_user.id
   #     flash[:notice] = "権限がありません"
   #     redirect_to login_path

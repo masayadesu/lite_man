@@ -19,5 +19,13 @@
         <th>管理者</th>
         <td><%= @user.administrator? ? "○" : "-" %></td>
       </tr>
+      <tr>
+        <th>作成日</th>
+        <td><%= @user.created_at.to_s(:datetime_jp) %></td>
+      </tr>
+      <tr>
+        <th>更新日</th>
+        <td><%= @user.updated_at.to_s(:datetime_jp) %></td>
+      </tr>
     </div>
 </table>

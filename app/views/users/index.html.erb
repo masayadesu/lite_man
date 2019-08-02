@@ -14,6 +14,8 @@
           <th>ユーザ名</th>
           <th>email</th>
           <th>管理者</th>
+          <th>作成日</th>
+          <th>更新日</th>
           <th></th>
           <th></th>
           <th></th>
@@ -27,6 +29,8 @@
             <td><%= user.name %></td>
             <td><%= user.email %></td>
             <td><%= user.administrator %></td>
+            <td><%= user.created_at.to_s(:datetime_jp) %></td>
+            <td><%= user.updated_at.to_s(:datetime_jp) %></td>
             <td><%= link_to '詳細', user, class: 'btn btn-outline-dark btn-sm' %></td>
             <td><%= link_to "編集", edit_user_path(user), class: 'btn btn-outline-dark btn-sm' %></td>
             <td><%= link_to "削除", user, method: :delete, data:{confirm: "本当に削除しますか？ "},
