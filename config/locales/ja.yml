@@ -16,7 +16,9 @@ ja:
       user:
         name: ユーザ名
         password: パスワード
+        current_password: 現在のパスワード
         password_confirmation: パスワード（確認）
+
   views:
     pagination:
       first: '最初'

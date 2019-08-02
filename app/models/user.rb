@@ -34,7 +34,7 @@ class User < ApplicationRecord
       with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
       # message: 'Emailの書式が不正です'
     }
-  validates :password, length: { minimum: 6}, on: :create
+  # validates :password, length: { minimum: 6}, on: :create
   # validates :password, length: { minimum: 6}, on: :update, allow_blank: true
 
   attr_accessor :current_password
