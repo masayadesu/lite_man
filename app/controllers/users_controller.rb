@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: %i[index show edit update me]
   before_action :correct_user, only: %i[show edit update]
-  
+
   # before_action :correct_user
+
   def index
-    @users = User.order("id")
+    # @users = User.order("id")
+    @users = User.order("id").page(params[:page])
   end
 
   def search
