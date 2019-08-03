@@ -32,8 +32,8 @@ if Rails.env == "development"
   (5..20).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
-                      keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "1")
-
+                      keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(1..50)}")
+    User.create!( name: "#{i}name", email: "#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
   end
 
 
