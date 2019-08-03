@@ -30,7 +30,7 @@ keyword = ["宇宙","ruby","rails","Let's Groove","自動化 AI","Relight My Fir
 state = ["読了","読中","未読","積読","購入希望"]
 
 
-  (1..50).each do |i|
+  (2..50).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(1..50)}")

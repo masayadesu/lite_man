@@ -20,7 +20,7 @@
 #
 
 class Literature < ApplicationRecord
-  belongs_to :user, optional: true 
+  belongs_to :user, optional: true
 
   validates :author,length:{maximum: 50}
   validates :title,length:{maximum: 100}
@@ -50,8 +50,8 @@ class Literature < ApplicationRecord
     end
   end
 
-  def user
-    return User.find_by(id: self.user_id)
-  end
+  # def user
+  #   return User.find_by(id: self.user_id)
+  # end
 
 end

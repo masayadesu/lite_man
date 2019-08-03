@@ -52,7 +52,7 @@ class User < ApplicationRecord
     end
   end
 
-  def literatures
-    return Literarure.where(user_id: self.id)
-  end
+  # def literatures
+  #   return Literarure.where(user_id: self.id)
+  # end
 end

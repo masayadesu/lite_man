@@ -1,5 +1,6 @@
 <!-- <h4>文献一覧</h4> -->
-<%= @current_user.id %>
+<%= @current_user.id %>|
+<%= @current_user.name %>
 <div class="d-flex align-items-center">
 
   <%= form_with(url: :search_literatures, method: :get, local: true) do  %>
@@ -26,7 +27,7 @@
       <th>状態</th>
       <th>キーワード</th>
       <th>備考/要約</th>
-      <th></th>
+      <th>user_id</th>
       <th></th>
       <th></th>
     </tr>
@@ -46,6 +47,7 @@
         <td><%= literature.state %></td>
         <td><%= literature.keyword.truncate(10) %></td>
         <td><%= literature.remarks.truncate(10) %></td>
+        <td><%= literature.user_id %></td>
         <td><%= link_to '詳細', literature, class: 'btn btn-outline-dark btn-sm' %></td>
         <td><%= link_to '編集', edit_literature_path(literature), class: 'btn btn-outline-dark btn-sm'%></td>
         <td><%= link_to '削除', literature,class: 'btn btn-outline-danger btn-sm',

@@ -6,18 +6,15 @@ class LiteraturesController < ApplicationController
 
 
   def index
-      @literatures = Literature.order(:id).page(params[:page])
+
       # @literatures = Literature.order(:id).page(params[:page])
-      # literature = Literature.where(:current_user)
-      #
-      # @literatures = Literature.where(:current_user).page(params[:page])
+      @literatures = Literature.where(user_id: @current_user).page(params[:page])
 
   end
 
   def search
-    # @literatures = Literature.search(params[:q])
-    # @literatures = @literatures.page(params[:page])
     @literatures = Literature.search(params[:q]).page(params[:page])
+    # @literatures = Literature.where(user_id: @current_user).search(params[:q]).page(params[:page])
     render "index"
   end
 
@@ -74,11 +71,10 @@ class LiteraturesController < ApplicationController
   end
   # def correct_user
   #   @literature = Literatue.find_by(id: params[:id])
-  #   biding.pry
   #   # @literature = Literatue.find_by(user_id: params[:user_id])
   #   if @literature.user_id != @current_user.id
   #     flash[:notice] = "権限がありません"
-  #     redirect_to login_path
+  #     # redirect_to login_path
   #   end
   # end
 
