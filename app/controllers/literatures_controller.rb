@@ -9,12 +9,13 @@ class LiteraturesController < ApplicationController
 
       # @literatures = Literature.order(:id).page(params[:page])
       @literatures = Literature.where(user_id: @current_user).page(params[:page])
-
+      # @literatures = Literature.my_bunken.page(params[:page])
+      # binding.pry
   end
 
   def search
-    @literatures = Literature.search(params[:q]).page(params[:page])
-    # @literatures = Literature.where(user_id: @current_user).search(params[:q]).page(params[:page])
+    # @literatures = Literature.search(params[:q]).page(params[:page])
+    @literatures = Literature.where(user_id: @current_user).search(params[:q]).page(params[:page])
     render "index"
   end
 

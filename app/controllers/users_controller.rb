@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: %i[index show edit update me]
-  before_action :correct_user, only: %i[show edit update]
+  # before_action :correct_user, only: %i[show edit update]
 
   # before_action :correct_user
 

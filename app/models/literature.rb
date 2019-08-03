@@ -22,6 +22,8 @@
 class Literature < ApplicationRecord
   belongs_to :user, optional: true
 
+  # scope :my_bunken, -> { where(user_id: :current_user) }
+
   validates :author,length:{maximum: 50}
   validates :title,length:{maximum: 100}
   validates :volume,length:{maximum: 10}
@@ -35,8 +37,7 @@ class Literature < ApplicationRecord
   validates :remarks,length:{maximum: 5000}
   validates :user_id, {presence: true}
 
-  # scope :search_literature, -> { where('author LIKE ? OR title LIKE ? publish LIKE ?  LIKE ? state LIKE ? remarks LIKE ?',
-  #    "%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%","%#{params[:name_key]}%") }
+
 
   class << self
     def search(query)
@@ -49,6 +50,8 @@ class Literature < ApplicationRecord
       rel
     end
   end
+
+
 
   # def user
   #   return User.find_by(id: self.user_id)
