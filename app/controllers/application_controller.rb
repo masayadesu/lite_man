@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def current_user
     return unless session[:user_id]
     @current_user = User.find_by(id: session[:user_id])
+    # binding.pry
   end
 
   def authenticate_user
@@ -14,4 +15,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+  # def authenticate_admin
+  #   raise Forbidden unless @current_member&.administrator?
+    # if  !@current_member&.administrator
+    #   flash[:error_messages] = "権限がありません"
+    #   redirect_to root_path
+    # end
+  # end
 end

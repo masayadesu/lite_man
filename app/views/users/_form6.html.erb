@@ -14,5 +14,11 @@
     <div class="form-group">
       <%= form.label :password_confirmation, 'パスワード（確認）' %>
       <%= form.password_field :password_confirmation, class: 'form-control' %>
-    </div>    
+    </div>
+    <% if controller.kind_of?(UsersController) %>
+      <div class="form-group">
+        <%= form.check_box :administrator, disabled: true %>
+        <%= form.label :administrator, "管理者"  %>
+      </div>
+    <% end %>
   <% end %>

@@ -1,11 +1,6 @@
 <table class="table text-left">
   <div class="card-header">
-    <%# if controller.kind_of?(UsersController) %>
-    <%# if controller.kind_of?(Admin::UsersController) %>
-    <!-- <h4>ユーザー詳細</h4> -->
-    <%# else %>
-    <h4>マイアカウント</h4>
-    <%# end %>
+    <h4>ユーザー詳細</h4>
   </div>
     <div class="card-body ">
       <tr>
@@ -35,6 +30,6 @@
     </div>
 </table>
 <% if controller.kind_of?(AccountsController) %>
-  <td class="float-right"><%= link_to "退会", account_path(@user), method: :delete, data:{confirm: "本当に退会しますか？ "},
+  <td class="float-right"><%= link_to "退会", @user, method: :delete, data:{confirm: "本当に退会しますか？ "},
     class: 'btn btn-outline-danger btn-sm float-right'%></td>
 <% end  %>

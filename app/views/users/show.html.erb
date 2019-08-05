@@ -2,7 +2,7 @@
   <div class="ml-auto users__linkBox">
     <td><%= link_to "一覧", users_path, class: 'btn btn-outline-dark' %></td>
     <td><%= link_to "編集", edit_user_path, class: 'btn btn-outline-dark' %></td>
-    <td><%= link_to '削除', @user,class: 'btn btn-outline-danger ',
+    <td><%= link_to '削除', account_path(@user),class: 'btn btn-outline-danger ',
        method: :delete, data: { confirm: '削除しますか?' } %></td>
   </div>
 </div>
