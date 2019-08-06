@@ -1,14 +1,14 @@
 class LiteraturesController < ApplicationController
   before_action :authenticate_user
   before_action :set_target_literature, only: %i[show edit update destroy]
-  # before_action :correct_user
+  before_action :correct_user, only: %i[show edit update destroy]
   # before_action :ensure_correct_user, only: %i[edit, update, destroy]}
 
 
   def index
     @literatures = Literature.where(user_id: @current_user).page(params[:page])
-    # @literatures = Literature.where(user_id: @current_user).search(params[:q]).page(params[:page])
-    # @literatures = Literature.where(user_id: @current_user).all
+    # literatures = Literature.all
+    # @literatures = current_user.literatures.page(params[:page])
     respond_to do |format|
       format.html
       format.csv do
@@ -89,12 +89,10 @@ class LiteraturesController < ApplicationController
   def set_target_literature
     @literature = Literature.find(params[:id])
   end
-  # def correct_user
-  #   @literature = Literatue.find_by(id: params[:id])
-  #   # @literature = Literatue.find_by(user_id: params[:user_id])
-  #   if @literature.user_id != @current_user.id
-  #     flash[:notice] = "権限がありません"
-  #     # redirect_to login_path
-  #   end
-  # end
+  def correct_user
+    if @literature.user_id != @current_user.id
+      flash[:error_messages] = "権限がありません"
+      redirect_to root_path
+    end
+  end
 end
