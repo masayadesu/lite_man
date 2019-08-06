@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: %i[index show edit update me]
+  before_action :authenticate_user, only: %i[index search show edit update destroy]
+  before_action :set_target_user, only: %i[show search edit update destroy]
   # before_action :authenticate_admin, except: %i[create]
   # before_action :correct_user, only: %i[show edit update]
 
-  # before_action :correct_user
+  before_action :correct_user, only: %i[index search show edit update destroy]
 
   def index
-    # @users = User.order("id")
     @users = User.order("id").page(params[:page])
   end
 
@@ -16,14 +16,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def new
     @user = User.new(flash[:user])
   end
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def create
@@ -41,7 +41,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
+    # @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     # @user.update_attributes(user_params)
     # binding.pry
@@ -55,7 +56,8 @@ class UsersController < ApplicationController
     end
   end
   def destroy
-    @user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
+    # @user = User.find(params[:id])
     @user.destroy
     redirect_to @user, notice: "ユーザーを削除しました"
   end
@@ -69,8 +71,17 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :administrator, :password, :password_confirmation)
   end
+  def set_target_user
+    @user = User.find(params[:id])
+  end
   # def correct_user
   #   @user = User.find(params[:id])
   #   redirect_to(root_url) unless @user == current_user
   # end
+  def correct_user
+    if @user.id != @current_user.id
+      flash[:error_message] = "権限がありません"
+      redirect_to literatures_path
+    end
+  end
 end

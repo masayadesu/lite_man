@@ -18,6 +18,9 @@
       <% if flash[:notice] %>
         <div class="alert alert-primary"><%= flash[:notice] %></div>
       <% end %>
+      <% if flash[:error_message] %>
+        <div class="alert alert-danger"><%= flash[:error_message] %></div>
+      <% end %>
         <%= yield %>
     <!-- </div> -->
     </main>

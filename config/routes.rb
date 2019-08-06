@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # get 'mypage', to: 'users#me'
-  get 'mypage', to: 'users#show'
+  # get 'mypage', to: 'users#show'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
@@ -16,11 +16,11 @@ Rails.application.routes.draw do
     get "search", on: :collection
   end
   resources :literatures do
-    # get "search", on: :collection
-    collection do
-      get "search"
-      get 'csv_output'
-    end
+    get "search", on: :collection
+    # collection do
+    #   get "search"
+    #   get 'csv_output'
+    # end
   end
   namespace :admin do
     root to: "top#index"

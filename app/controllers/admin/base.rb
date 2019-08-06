@@ -6,7 +6,7 @@ class Admin::Base < ApplicationController
     # raise Forbidden unless @current_user&.administrator?
     if  !@current_user&.administrator
 
-      flash[:error_messages] = "権限がありません"
+      flash[:error_message] = "権限がありません"
       redirect_to literatures_path
     end
   end

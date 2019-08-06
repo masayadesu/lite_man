@@ -64,6 +64,16 @@ class LiteraturesController < ApplicationController
     end
   end
 
+  # def update
+  #   if @literature.update(literature_params)
+  #     flash[:notice] = "#{@literature.title}の文献を編集しました"
+  #     redirect_to @literature
+  #   else
+  #     flash[:notice] = @literature
+  #     flash[:error_messages] = @literature.errors.full_messages
+  #     redirect_back fallback_location: @literature
+  #   end
+  # end
   def update
     if @literature.update(literature_params)
       flash[:notice] = "#{@literature.title}の文献を編集しました"
@@ -91,7 +101,7 @@ class LiteraturesController < ApplicationController
   end
   def correct_user
     if @literature.user_id != @current_user.id
-      flash[:error_messages] = "権限がありません"
+      flash[:error_message] = "権限がありません"
       redirect_to root_path
     end
   end

@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::Base
   # before_action :authenticate_admin, only: %i[index show edit update]
   # before_action :correct_user, only: %i[show edit update]
 
-  before_action :authenticate_admin
+  # before_action :authenticate_admin
 
   def index
     # @users = User.order("id")
@@ -64,15 +64,10 @@ class Admin::UsersController < Admin::Base
 
 
 
-  def me
-  end
+
 
   private
   def user_params
     params.require(:user).permit(:name, :email, :administrator, :password, :password_confirmation)
   end
-  # def correct_user
-  #   @user = User.find(params[:id])
-  #   redirect_to(root_url) unless @user == current_user
-  # end
 end
