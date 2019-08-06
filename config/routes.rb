@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     get "search", on: :collection
   end
   resources :literatures do
-    get "search", on: :collection
+    # get "search", on: :collection
+    collection do
+      get "search"
+      get 'csv_output'
+    end
   end
   namespace :admin do
     root to: "top#index"

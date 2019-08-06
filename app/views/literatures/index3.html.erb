@@ -4,16 +4,17 @@
 <%= @current_user.administrator %>
 <div class="d-flex align-items-center">
 
-  <%= form_with(url: :search_literatures, method: :get, local: true) do |f| %>
-    <%#= f.text_field "q", params[:q] %>
-    <%= f.text_field :q %>
-    <%= f.submit '検索', class: "btn btn-outline-info btn-sm" %>
-    <%#= f.submit "CSV出力", name: 'csv_output', class: "btn btn-primary btn-sm" %>
+  <%= form_with url: :search_literatures, method: :get, local: true do%>
+    <%= text_field_tag "q", params[:q] %>
+    <%= submit_tag '検索', class: "btn btn-outline-info btn-sm" %>
+    <%= submit_tag "CSV出力", literatures_path(format: :csv), name: 'csv_output', class: "btn btn-primary" %>
+  </div>
      <%= link_to 'Clear', literatures_path %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
     <%= link_to "新規作成", new_literature_path, class: "btn btn-outline-dark" %>
+    <%#= link_to "CSV出力", csv_output_literatures_path(format: :csv), class: "btn btn-primary" %>
     <%= link_to "CSV出力", literatures_path(format: :csv), name: 'csv_output', class: "btn btn-primary" %>
   </div>
 </div>
@@ -61,5 +62,4 @@
     <%  end %>
   </tbody>
 </table>
-
 <%= paginate @literatures %>

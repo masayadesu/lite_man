@@ -6,9 +6,8 @@ class LiteraturesController < ApplicationController
 
 
   def index
-    @literatures = Literature.where(user_id: @current_user).page(params[:page])
-    # @literatures = Literature.where(user_id: @current_user).search(params[:q]).page(params[:page])
-    # @literatures = Literature.where(user_id: @current_user).all
+    # @literatures = Literature.where(user_id: @current_user).page(params[:page])
+    @literatures = Literature.where(user_id: @current_user).all
     respond_to do |format|
       format.html
       format.csv do
@@ -17,12 +16,13 @@ class LiteraturesController < ApplicationController
     end
   end
 
+
+
   def search
     @literatures = Literature.where(user_id: @current_user).search(params[:q]).page(params[:page])
     # if params[:csv_output]
       # send_data render_to_string, filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
       # send_data render_to_string, template: "literatures/search.csv.ruby", filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
-      # send_data render_to_string, template: "literatures/csv_output.csv.ruby", filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
     # else
       render "index"
     # end

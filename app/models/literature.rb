@@ -41,7 +41,8 @@ class Literature < ApplicationRecord
 
   class << self
     def search(query)
-      rel = order(updated_at: "DESC")
+      # rel = order(updated_at: "DESC")
+      rel = order(:id)
       if query.present?
         rel = rel.where(
         "author LIKE ? OR title LIKE ? OR url LIKE ? OR published LIKE ? OR publish LIKE ? OR keyword LIKE ? OR state LIKE ? OR remarks LIKE ?",
