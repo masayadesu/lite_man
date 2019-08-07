@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   #   get "search", on: :collection
   # end
 
-  # resources :users, only: %i[new edit create]
-  resources :users, only: %i[ new create]
+  resources :users
+  # resources :users, only: %i[ new create destroy]
   resources :literatures do
     get "search", on: :collection
     # collection do

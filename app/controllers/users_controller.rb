@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
   end
 
   def new
@@ -34,22 +33,15 @@ class UsersController < ApplicationController
       redirect_to literatures_path
     else
       flash[:error_messages] = user.errors.full_messages
-      # binding.pry
       redirect_back fallback_location: user
 
     end
   end
 
   def update
-    # @user = User.find_by(id: params[:id])
-    # @user = User.find(params[:id])
     @user.assign_attributes(user_params)
-    # @user.update_attributes(user_params)
-    # binding.pry
     if @user.save
-      # redirect_to @user, notice: "#{@user.name}さんのユーザー情報を編集しました"
       redirect_to account_path(@user), notice: "#{@user.name}さんのユーザー情報を編集しました"
-      # binding.pry
     else
       flash[:error_messages] = user.errors.full_messages
       render "edit"

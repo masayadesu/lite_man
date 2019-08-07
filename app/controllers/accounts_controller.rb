@@ -12,13 +12,10 @@ class AccountsController < ApplicationController
 
   def update
     # binding.pry
-    # @user.assign_attributes(account_params)
-    @user.update(account_params)
-    # binding.pry
-    if @user.save
+    @user.assign_attributes(account_params)
+    if @user.save!
       redirect_to :account, notice: "アカウント情報を更新しました。"
     else
-      # binding.pry
       render "edit"
     end
   end
