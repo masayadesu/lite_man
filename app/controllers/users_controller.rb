@@ -39,20 +39,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.assign_attributes(user_params)
-    if @user.save
-      redirect_to account_path(@user), notice: "#{@user.name}さんのユーザー情報を編集しました"
-    else
-      flash[:error_messages] = user.errors.full_messages
-      render "edit"
-      # binding.pry
-    end
+    # @user.assign_attributes(user_params)
+    # if @user.save
+    #   redirect_to account_path(@user), notice: "#{@user.name}さんのユーザー情報を編集しました"
+    # else
+    #   flash[:error_messages] = user.errors.full_messages
+    #   render "edit"
+    # end
   end
   def destroy
-    # @user = User.find_by(id: params[:id])
-    # @user = User.find(params[:id])
-    @user.destroy
-    redirect_to @user, notice: "ユーザーを削除しました"
+    # @user.destroy
+    # redirect_to @user, notice: "ユーザーを削除しました"
   end
 
   private

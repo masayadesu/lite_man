@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
     # binding.pry
     @user.assign_attributes(account_params)
     if @user.save!
-      redirect_to :account, notice: "アカウント情報を更新しました。"
+      redirect_to :account, notice: "#{@user.name}さんのアカウント情報を更新しました。"
     else
       render "edit"
     end
@@ -22,7 +22,8 @@ class AccountsController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to @user, notice: "ユーザーを削除しました"
+    flash[:error_message] = "登録を解除しました"
+    redirect_to :root
   end
 
   private

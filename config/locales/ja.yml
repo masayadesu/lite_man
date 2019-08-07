@@ -18,11 +18,9 @@ ja:
         password: 新しいパスワード
         current_password: 現在のパスワード
         password_confirmation: パスワード（確認）
-      errors:
-        messages:
-          invalid_member_name: は半角英数字で入力してください。
-          wrong: が正しくありません。
-
+    errors:
+      messages:
+        wrong: が正しくありません。
   views:
     pagination:
       first: '最初'

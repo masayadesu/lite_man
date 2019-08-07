@@ -1,4 +1,4 @@
-<%= render 'shared/error_messages' %>
+<%#= render 'shared/error_messages' %>
 <%#= render 'shared/error_messages',obj:@user %>
 
 <div class="form_box  col-sm-6">
@@ -6,11 +6,7 @@
   <div><%= link_to "マイアカウントに戻る", :account, class: 'nav-link float-right' %></div>
   <%#= form_with model: @user, url: :account do |form| %>
   <%= form_with model: @user, scope: :account, url: :account do |form| %>
-  <%#= form_for @user, as: "account", url: :account do |form| %>
-  <%#= form_with model: @user do |form| %>
     <%= render 'users/form', form: form %>
-
   <%= form.submit '更新', class: 'btn btn-primary' %>
-  <%# binding.pry %>
   <% end %>
 </div>

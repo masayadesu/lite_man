@@ -36,9 +36,9 @@
 </table>
 <% if controller.kind_of?(AccountsController) %>
   <td class="float-right">
-    <%#= link_to "退会", :account, method: :delete, data:{confirm: "本当に退会しますか？ "},
+    <%= link_to "退会", :account, method: :delete, data:{confirm: "本当に退会しますか？ "},
     class: 'btn btn-outline-danger btn-sm float-right'%>
-    <%= link_to "退会", @user, method: :delete, data:{confirm: "本当に退会しますか？ "},
+    <%#= link_to "退会", @user, method: :delete, data:{confirm: "本当に退会しますか？ "},
     class: 'btn btn-outline-danger btn-sm float-right'%>
   </td>
 <% end  %>

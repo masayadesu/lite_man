@@ -15,25 +15,24 @@ class PasswordsController < ApplicationController
     # current_password = account_params[:current_password]
     if current_password.present?
       if @user.authenticate(current_password)
-        # @user.assign_attributes(params[:account])
         @user.assign_attributes(account_params)
         if @user.save
           redirect_to :account, notice: "パスワードを変更しました。"
         else
+          flash[:error_messages] = @user.errors.full_messages
           render "edit"
         end
       else
         flash[:error_messages] = @user.errors.add(:current_password, :wrong)
-        # flash[:error_message] = @user.errors.add(:current_password, "現在のパスワードが違います")
-        redirect_back fallback_location: @user
-        # render "edit"
+        flash[:error_messages] = @user.errors.full_messages
+        render "edit"
       end
     else
       flash[:error_messages] = @user.errors.add(:current_password, :empty)
-      # flash[:error_message] = @user.errors.add(:current_password, "現在のパスワードを入力してください")
-      redirect_back fallback_location: @user
-      # render "edit"
+      flash[:error_messages] = @user.errors.full_messages
+      render "edit"
     end
+    # flash[:error_messages] = @user.errors.full_messages
   end
 
   private
