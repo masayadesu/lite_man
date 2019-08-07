@@ -3,11 +3,11 @@
   <%= form_with(url: :search_literatures, method: :get, local: true) do |f| %>
     <%= f.text_field :q %>
     <%= f.submit '検索', class: "btn btn-outline-info btn-sm" %>
-     <%= link_to 'Clear', literatures_path %>
+     <%= link_to 'Clear', @literature %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
-    <%= link_to "新規作成", new_literature_path, class: "btn btn-outline-dark" %>
+    <%= link_to "新規作成", :new_literature, class: "btn btn-outline-dark" %>
     <%= link_to "CSV出力", literatures_path(format: :csv), name: 'csv_output', class: "btn btn-primary" %>
   </div>
 </div>

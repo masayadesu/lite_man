@@ -1,5 +1,16 @@
 <%= render 'shared/error_messages' %>
 
+<% if flash[:error_messages]  %>
+  <div class="alert alert-danger">
+    <ul>
+      <% flash[:error_messages].each do |msg|  %>
+        <li><%= msg %></li>
+      <% end %>
+    <ul>
+  </div>
+<% end %>
+
+
 <%= form_with model: literature do |f| %>
   <div class="row">
     <div class="form-group col-sm-6">

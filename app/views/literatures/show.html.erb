@@ -1,15 +1,11 @@
-<%# if flash[:notice] %>
-  <!-- <div class="alert alert-primary"><%#= flash[:notice] %></div> -->
-<%# end %>
-<!-- <div class="d-flex align-items-center mt-4 mb-4"> -->
 <div class="d-flex align-items-center">
   <div class="ml-auto literatures__linkBox">
-    <td><%= link_to "一覧", literatures_path, class: 'btn btn-outline-dark' %></td>
-    <td><%= link_to "編集", edit_literature_path, class: 'btn btn-outline-dark' %></td>
+    <td><%= link_to "一覧", @literatures, class: 'btn btn-outline-dark' %></td>
+    <td><%= link_to "編集", @literature, class: 'btn btn-outline-dark' %></td>
     <td><%= link_to '削除', @literature,class: 'btn btn-outline-danger ',
        method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
   </div>
 </div>
 
-<%#= render partial: 'literature', object: @literature %>
+<%#= render partial: 'literature', object: @literature edit_literature_path%>
 <%= render  @literature %>
