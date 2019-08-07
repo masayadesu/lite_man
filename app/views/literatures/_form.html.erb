@@ -37,9 +37,6 @@
     <div class="form-group col-sm-2">
       <%= f.label :published, '出版年/掲載年' %>
       <%= f.text_field :published, class: 'form-control'%>
-      <%#= f.month_field :published, class: 'form-control'%> %>
-      <%#= f.date_field :published,  class: 'form-control'%>
-      <%#= f.date_select :published,{:discard_day => true}, class: 'form-control'%>
     </div>
     <div class="form-group col-sm-10">
       <%= f.label :publish, '出版社/サイト名' %>
@@ -53,7 +50,10 @@
     </div>
     <div class="form-group col-sm-4">
       <%= f.label :state, '状態' %>
-      <%= f.text_field :state, class: 'form-control' %>
+      <div><%= f.select :state,
+        [  "未読", "読中", "読了", "購入希望", ""],
+        {include_blank: '選択してください'},
+        class: 'form-control' %></div>
     </div>
     <div class="form-group col-sm-4">
       <%= f.label :keyword, 'キーワード' %>

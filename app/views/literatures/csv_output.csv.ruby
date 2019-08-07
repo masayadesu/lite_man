@@ -2,7 +2,7 @@ require 'csv'
 require "nkf"
 
 csv_data = CSV.generate do |csv|
-  csv_column_names = %w(Id Author Title Volume Page Url Published Publish Price Keyword State remarks )
+  csv_column_names = %w(No Author Title Volume Page Url Published Publish Price Keyword State Remarks )
   csv << csv_column_names
   @literatures.each do |literature|
     csv_column_values = [

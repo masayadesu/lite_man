@@ -2,13 +2,10 @@ class LiteraturesController < ApplicationController
   before_action :authenticate_user
   before_action :set_target_literature, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[show edit update destroy]
-  # before_action :ensure_correct_user, only: %i[edit, update, destroy]}
 
 
   def index
     @literatures = Literature.where(user_id: @current_user).page(params[:page])
-    # literatures = Literature.all
-    # @literatures = current_user.literatures.page(params[:page])
     respond_to do |format|
       format.html
       format.csv do
@@ -52,8 +49,6 @@ class LiteraturesController < ApplicationController
 
   def create
     literature = Literature.create(literature_params)
-    # literature = Literature.create((literature_params),user_id: @current_user.id)
-    # binding.pry
     if literature.save
       flash[:notice] = "文献を追加しました"
       redirect_to literature
@@ -64,16 +59,6 @@ class LiteraturesController < ApplicationController
     end
   end
 
-  # def update
-  #   if @literature.update(literature_params)
-  #     flash[:notice] = "#{@literature.title}の文献を編集しました"
-  #     redirect_to @literature
-  #   else
-  #     flash[:notice] = @literature
-  #     flash[:error_messages] = @literature.errors.full_messages
-  #     redirect_back fallback_location: @literature
-  #   end
-  # end
   def update
     if @literature.update(literature_params)
       flash[:notice] = "#{@literature.title}の文献を編集しました"
