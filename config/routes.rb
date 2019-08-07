@@ -11,10 +11,14 @@ Rails.application.routes.draw do
 
   resource :account, only: %i[show edit update destroy]
   resource :password, only: %i[show edit update]
-  # resources :users,only: %i[index show] do
-  resources :users do
-    get "search", on: :collection
-  end
+  #
+
+  # resources :users do
+  #   get "search", on: :collection
+  # end
+
+  # resources :users, only: %i[new edit create]
+  resources :users, only: %i[ new create]
   resources :literatures do
     get "search", on: :collection
     # collection do
@@ -23,7 +27,7 @@ Rails.application.routes.draw do
     # end
   end
   namespace :admin do
-    root to: "top#index"
+    # root to: "top#index"
     resources :users do
       get "search", on: :collection
     end

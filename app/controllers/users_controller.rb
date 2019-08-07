@@ -47,7 +47,8 @@ class UsersController < ApplicationController
     # @user.update_attributes(user_params)
     # binding.pry
     if @user.save
-      redirect_to @user, notice: "#{@user.name}さんのユーザー情報を編集しました"
+      # redirect_to @user, notice: "#{@user.name}さんのユーザー情報を編集しました"
+      redirect_to account_path(@user), notice: "#{@user.name}さんのユーザー情報を編集しました"
       # binding.pry
     else
       flash[:error_messages] = user.errors.full_messages
@@ -62,11 +63,6 @@ class UsersController < ApplicationController
     redirect_to @user, notice: "ユーザーを削除しました"
   end
 
-
-
-  def me
-  end
-
   private
   def user_params
     params.require(:user).permit(:name, :email, :administrator, :password, :password_confirmation)
@@ -74,10 +70,6 @@ class UsersController < ApplicationController
   def set_target_user
     @user = User.find(params[:id])
   end
-  # def correct_user
-  #   @user = User.find(params[:id])
-  #   redirect_to(root_url) unless @user == current_user
-  # end
   def correct_user
     if @user.id != @current_user.id
       flash[:error_message] = "権限がありません"

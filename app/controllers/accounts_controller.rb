@@ -11,10 +11,14 @@ class AccountsController < ApplicationController
   end
 
   def update
-    @user.assign_attributes(params[:account])
+    # binding.pry
+    # @user.assign_attributes(account_params)
+    @user.update(account_params)
+    # binding.pry
     if @user.save
       redirect_to :account, notice: "アカウント情報を更新しました。"
     else
+      # binding.pry
       render "edit"
     end
   end
@@ -25,6 +29,10 @@ class AccountsController < ApplicationController
   end
 
   private
+  def account_params
+    params.require(:account).permit(:name, :email)
+  end
+
   def set_target_account
     @user = @current_user
   end

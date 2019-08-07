@@ -11,15 +11,10 @@ class PasswordsController < ApplicationController
 
   def update
     @user = current_user
-    # binding.pry
-    # current_password = params[:account][:current_password]
-    current_password = account_params[:current_password]
-    # binding.pry
-
+    current_password = params[:account][:current_password]
+    # current_password = account_params[:current_password]
     if current_password.present?
-
       if @user.authenticate(current_password)
-        # binding.pry
         # @user.assign_attributes(params[:account])
         @user.assign_attributes(account_params)
         if @user.save
@@ -28,16 +23,14 @@ class PasswordsController < ApplicationController
           render "edit"
         end
       else
-        # flash[:error_messages] = @user.errors.add(:current_password, :wrong)
-        flash[:error_messages] = @user.errors.add(:current_password, "が違います")
-        # binding.pry
+        flash[:error_messages] = @user.errors.add(:current_password, :wrong)
+        # flash[:error_message] = @user.errors.add(:current_password, "現在のパスワードが違います")
         redirect_back fallback_location: @user
         # render "edit"
       end
     else
-      # flash[:error_messages] = @user.errors.add(:current_password, :empty)
-      flash[:error_messages] = @user.errors.add(:current_password, "を入力してください")
-      # binding.pry
+      flash[:error_messages] = @user.errors.add(:current_password, :empty)
+      # flash[:error_message] = @user.errors.add(:current_password, "現在のパスワードを入力してください")
       redirect_back fallback_location: @user
       # render "edit"
     end
