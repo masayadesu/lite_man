@@ -34,7 +34,6 @@ class User < ApplicationRecord
     length: {maximum: 50},
     format: {
       with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-      # message: 'Emailの書式が不正です'
     }
   # validates :password, length: { minimum: 6}
   validates :password, length: { minimum: 6}, on: :create
@@ -52,8 +51,4 @@ class User < ApplicationRecord
       rel
     end
   end
-
-  # def literatures
-  #   return Literarure.where(user_id: self.id)
-  # end
 end

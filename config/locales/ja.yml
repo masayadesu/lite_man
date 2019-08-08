@@ -15,12 +15,13 @@ ja:
         remarks: 備考/要約
       user:
         name: ユーザー名
-        password: 新しいパスワード
+        password: パスワード
         current_password: 現在のパスワード
         password_confirmation: パスワード（確認）
     errors:
       messages:
         wrong: が正しくありません。
+        empty: を入力してください。
   views:
     pagination:
       first: '最初'
