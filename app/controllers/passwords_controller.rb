@@ -32,7 +32,6 @@ class PasswordsController < ApplicationController
       flash[:error_messages] = @user.errors.full_messages
       render "edit"
     end
-    # flash[:error_messages] = @user.errors.full_messages
   end
 
   private

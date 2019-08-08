@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if @current_user == nil
-      flash[:error_messages] = "ログインが必要です"
-      redirect_to root_path
+      flash[:error_message] = "ログインが必要です"
+      redirect_to :root
     end
   end
   # def authenticate_admin

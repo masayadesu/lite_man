@@ -9,15 +9,15 @@ class SessionsController < ApplicationController
       redirect_to literatures_path
       # binding.pry
     else
-      flash[:error_messages] = "ユーザー名またはパスワードが間違っています"
+      flash[:error_message] = "ユーザー名またはパスワードが間違っています"
       redirect_back fallback_location: user
     end
   end
 
   def destroy
     session.delete(:user_id)
-    # flash[:notice] = "ログアウトしました"
-    redirect_to root_path
+    flash[:notice] = "ログアウトしました"
+    redirect_to :root
   end
 
   private
