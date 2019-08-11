@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-if Rails.env == "development"
+# if Rails.env == "development"
 
   url = ["https://www.amazon.co.jp/","https://www.oreilly.co.jp/index.shtml",""]
   keyword = ["宇宙","ruby","rails","Let's Groove","自動化 AI","レポート課題","論文"]
@@ -41,4 +41,4 @@ if Rails.env == "development"
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(1..20)}")
     User.create!( name: "#{i}name", email: "#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
   end
-end
+# end
