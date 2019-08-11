@@ -30,16 +30,21 @@
   User.create!( name: "admin", email: "admin@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
   User.create!( name: "user", email: "user@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
 
-  (5..50).each do |i|
+  (5..30).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "1")
+  end
+  (31..50).each do |i|
+    Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
+                      url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
+                      keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "2")
   end
 
   (51..100).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
-                      keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(1..20)}")
+                      keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(3..20)}")
     User.create!( name: "user#{i}", email: "#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
   end
 # end
