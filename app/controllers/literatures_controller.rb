@@ -9,7 +9,6 @@ class LiteraturesController < ApplicationController
     @literatures = Literature.where(user_id: @current_user).page(params[:page]).per(@per_page)
     respond_to do |format|
       format.html
-      format.js
       format.csv do
         send_data render_to_string, filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
       end

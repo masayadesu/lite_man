@@ -62,6 +62,8 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+gem 'rails_12factor', group: :production
+
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'kaminari'
