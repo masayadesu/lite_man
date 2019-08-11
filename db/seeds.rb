@@ -27,7 +27,8 @@
                     url: "http://hdl.handle.net/11334/1034", published: "1973-6", publish: "東海学園女子短期大学", price: "",
                     keyword: "バナナ 色調 変化 研究 レポート用" , state: "味読", remarks: "", user_id: "1")
 
-  User.create!( name: "washi", email: "123@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
+  User.create!( name: "admin", email: "admin@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
+  User.create!( name: "user", email: "user@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
 
   (5..50).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
@@ -39,6 +40,6 @@
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(1..20)}")
-    User.create!( name: "#{i}name", email: "#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
+    User.create!( name: "user#{i}", email: "#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
   end
 # end

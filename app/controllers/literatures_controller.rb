@@ -5,8 +5,9 @@ class LiteraturesController < ApplicationController
 
   def index
     # @per_page = params[:per_page]
-    @per_page ||= 10
-    @literatures = Literature.where(user_id: @current_user).page(params[:page]).per(@per_page)
+    # @per_page ||= 10
+    # @literatures = Literature.where(user_id: @current_user).page(params[:page]).per(@per_page)
+    @literatures = Literature.where(user_id: @current_user).page(params[:page])
     respond_to do |format|
       format.html
       format.csv do
