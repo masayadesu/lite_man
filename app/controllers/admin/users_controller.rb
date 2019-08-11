@@ -7,7 +7,8 @@ class Admin::UsersController < Admin::Base
 
   def index
     # @users = User.order("id")
-    @users = User.order("id").page(params[:page])
+    @users = User.page(params[:page]).per(20).order("id")
+    # @users = User.page(params[:page]).order("id")
   end
 
   def search

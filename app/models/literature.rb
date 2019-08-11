@@ -37,7 +37,14 @@ class Literature < ApplicationRecord
   validates :remarks,length:{maximum: 5000}
   validates :user_id, {presence: true}
 
-
+# per_page = params[:per_page]
+# page_per ||= 5
+ #  paginates_per  "#{page_per}"
+  paginates_per  20
+  # default_per_page 20
+  # binding.pry
+  # default_per_page = 10
+  # paginates_per session[:change_number]
 
   class << self
     def search(query)
@@ -54,8 +61,6 @@ class Literature < ApplicationRecord
 
 
 
-  # def user
-  #   return User.find_by(id: self.user_id)
-  # end
+
 
 end

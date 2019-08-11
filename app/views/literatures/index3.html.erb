@@ -11,25 +11,29 @@
     <%= link_to "CSV出力", literatures_path(format: :csv), name: 'csv_output', class: "btn btn-primary" %>
   </div>
 </div>
+
+<div> <%= session[:change_number]  %> </div>
 <div>全 <%= @literatures.total_count %> 件</div>
 <div>
   <%= @literatures.current_page + @literatures.offset_value %>件
   から<%= @literatures.offset_value + @literatures.length %>件を表示しています。
 
-  <!-- <span>表示件数 <%#= select_tag "per_page",
+  <span>表示件数 <%= select_tag "change_number",
     options_for_select(
-      {'10件' => 10, '20件' => 20, '30件' => 30, '40件' => 40, '50件' => 50}, @per_page )%></span>
+      {'10件' => 10, '20件' => 20, '30件' => 30, '40件' => 40, '50件' => 50},10),
+      data:{ remote:true, method: :get} %>
 
+       <%# binding.pry %>
 <script>
-  $('#per_page').change(function() {
-    var per_page = $('option:selected').val();
+  $('#change_number').change(function() {
+    var change_number = $('option:selected').val();
     $.ajax({
         url: '/literatures/index',
         type: 'GET',
         dataType: 'html',
         async: true,
         data: {
-          per_page: per_page
+          change_number: change_number
         },
         success: function(data) {
           alert("ajax success");
@@ -39,7 +43,7 @@
         }
     });
   })
-</script> -->
+</script>
 
 </div>
 

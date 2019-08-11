@@ -20,11 +20,13 @@ Rails.application.routes.draw do
   # resources :users
   resources :users, only: %i[ new create]
   resources :literatures do
-    get "search", on: :collection
-    # collection do
-    #   get "search"
-    #   get 'csv_output'
-    # end
+    # get "search", on: :collection
+    # get "change_number"
+    collection do
+      get "search"
+      get "per_page"
+      # get 'csv_output'
+    end
   end
   namespace :admin do
     # root to: "top#index"

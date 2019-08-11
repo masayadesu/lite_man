@@ -29,13 +29,13 @@ if Rails.env == "development"
 
   User.create!( name: "washi", email: "123@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
 
-  (5..20).each do |i|
+  (5..50).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "1")
   end
 
-  (21..100).each do |i|
+  (51..100).each do |i|
     Literature.create!(author: "著者#{i}", title: "title#{i}", volume: "#{i}", page: "#{i}",
                       url: "#{url.sample}", published: "#{i + 1950}", publish: "☓☓☓社#{i}", price: "#{i * 100}",
                       keyword: "#{keyword.sample}" , state: "#{state.sample}", remarks: "*******#{i}", user_id: "#{rand(1..20)}")

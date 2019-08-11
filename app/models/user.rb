@@ -42,6 +42,8 @@ class User < ApplicationRecord
   attr_accessor :current_password
   validates :password, presence: { if: :current_password }
 
+  paginates_per 20
+
   class << self
     def search(query)
       rel = order("id")
