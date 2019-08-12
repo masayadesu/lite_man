@@ -2,11 +2,13 @@
 @import "base";
 @import "literature";
 @import "users";
+@import "top";
+@import "about";
 
 body {
   padding: 90px 15px 0;
-  // padding: 70px 30px 0 30px;
 }
+
 ul {
   list-style: none;
 }
