@@ -1,23 +1,15 @@
 <h4>文献一覧</h4>
 <div class="d-flex align-items-center">
   <%= form_with(url: :search_literatures, method: :get, local: true) do |f| %>
-  <%#= form_with(url: :literatures, method: :get, local: true) do |f| %>
     <%= f.text_field :q %>
     <%= f.submit "検索", class: "btn btn-outline-info btn-sm" %>
-     <%#= link_to "Clear", :clear_literatures %>
      <%= link_to "Clear", :literatures %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
     <%= link_to "新規作成", :new_literature, class: "btn btn-outline-dark" %>
-    <%#= link_to "CSV出力", literatures_path(format: :csv), name: "csv_output", class: "btn btn-primary" %>
     <%= link_to "CSV出力", search_literatures_path(format: :csv), name: "csv_output", class: "btn btn-primary" %>
     <%#= link_to "CSV出力", literatures_path(params.merge(format: :csv)), name: "csv_output", class: "btn btn-primary" %>
-    <%#= link_to "CSV出力", literatures_path(request.params.merge(format: :csv)), name: "csv_output", class: "btn btn-primary" %>
-    <%#= link_to "CSV出力", literatures_path(request.params.merge(format: csv_params)), name: "csv_output", class: "btn btn-primary" %>
-
-
-
     <%# binding.pry %>
   </div>
 </div>

@@ -23,8 +23,7 @@ Rails.application.routes.draw do
     # get "change_number"
     collection do
       get "search"
-      get "clear"
-      # get "csv_output"
+      get "csv_output"
     end
   end
   namespace :admin do

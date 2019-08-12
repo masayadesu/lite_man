@@ -17,9 +17,15 @@ class LiteraturesController < ApplicationController
         format.html { render :action => "index" }
         format.csv do
           send_data render_to_string, filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
+        # format.csv { render :action => "csv_output" }
         end
       end
   end
+
+  # def csv_output
+  #   @literatures = Literature.where(user_id: @current_user).search(session[:q]).page(params[:total_count])
+  #   send_data render_to_string, filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
+  # end
 
   def show
   end
