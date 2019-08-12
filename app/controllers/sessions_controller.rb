@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   before_action :forbid_login_user , {only: %i[create]}
+  
+  def login
+  end
 
   def create
     user = User.find_by(name: params[:session][:name])
