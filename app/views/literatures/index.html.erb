@@ -1,14 +1,24 @@
 <h4>文献一覧</h4>
 <div class="d-flex align-items-center">
   <%= form_with(url: :search_literatures, method: :get, local: true) do |f| %>
+  <%#= form_with(url: :literatures, method: :get, local: true) do |f| %>
     <%= f.text_field :q %>
-    <%= f.submit '検索', class: "btn btn-outline-info btn-sm" %>
-     <%= link_to 'Clear', @literature %>
+    <%= f.submit "検索", class: "btn btn-outline-info btn-sm" %>
+     <%#= link_to "Clear", :clear_literatures %>
+     <%= link_to "Clear", :literatures %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
     <%= link_to "新規作成", :new_literature, class: "btn btn-outline-dark" %>
-    <%= link_to "CSV出力", literatures_path(format: :csv), name: 'csv_output', class: "btn btn-primary" %>
+    <%#= link_to "CSV出力", literatures_path(format: :csv), name: "csv_output", class: "btn btn-primary" %>
+    <%= link_to "CSV出力", search_literatures_path(format: :csv), name: "csv_output", class: "btn btn-primary" %>
+    <%#= link_to "CSV出力", literatures_path(params.merge(format: :csv)), name: "csv_output", class: "btn btn-primary" %>
+    <%#= link_to "CSV出力", literatures_path(request.params.merge(format: :csv)), name: "csv_output", class: "btn btn-primary" %>
+    <%#= link_to "CSV出力", literatures_path(request.params.merge(format: csv_params)), name: "csv_output", class: "btn btn-primary" %>
+
+
+
+    <%# binding.pry %>
   </div>
 </div>
 <div>全 <%= @literatures.total_count %> 件</div>
@@ -18,7 +28,7 @@
 
   <!-- <span>表示件数 <%#= select_tag "per_page",
     options_for_select(
-      {'10件' => 10, '20件' => 20, '30件' => 30, '40件' => 40, '50件' => 50}, @per_page )%></span>
+      {"10件" => 10, "20件" => 20, "30件" => 30, "40件" => 40, "50件" => 50}, @per_page )%></span>
 
 <script>
   $('#per_page').change(function() {
@@ -79,10 +89,10 @@
         <td><%= literature.keyword.truncate(10) %></td>
         <td><%= literature.remarks.truncate(10) %></td>
         <td><%= literature.user_id %></td>
-        <td><%= link_to '詳細', literature, class: 'btn btn-outline-dark btn-sm' %></td>
-        <td><%= link_to '編集', edit_literature_path(literature), class: 'btn btn-outline-dark btn-sm'%></td>
-        <td><%= link_to '削除', literature, class: 'btn btn-outline-danger btn-sm',
-           method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <td><%= link_to "詳細", literature, class: "btn btn-outline-dark btn-sm" %></td>
+        <td><%= link_to "編集", edit_literature_path(literature), class: "btn btn-outline-dark btn-sm"%></td>
+        <td><%= link_to "削除", literature, class: "btn btn-outline-danger btn-sm",
+           method: :delete, data: { confirm: "本当に削除しますか?" } %></td>
       </tr>
     <%  end %>
   </tbody>

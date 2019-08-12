@@ -1,60 +1,60 @@
-<%= render 'shared/error_messages' %>
+<%= render "shared/error_messages" %>
 
 <%= form_with model: literature do |f| %>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= f.label :author, '著者' %>
-      <%= f.text_field :author, class: 'form-control' %>
+      <%= f.label :author, "著者" %>
+      <%= f.text_field :author, class: "form-control" %>
     </div>
     <div class="form-group col-sm-6">
-      <%= f.label :title, 'タイトル/論文/記事名' %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.label :title, "タイトル/論文/記事名" %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= f.label :volume, '巻号' %>
-      <%= f.text_field :volume, class: 'form-control' %>
+      <%= f.label :volume, "巻号" %>
+      <%= f.text_field :volume, class: "form-control" %>
     </div>
     <div class="form-group col-sm-6">
-      <%= f.label :page, '頁' %>
-      <%= f.text_field :page, class: 'form-control' %>
+      <%= f.label :page, "頁" %>
+      <%= f.text_field :page, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :url, 'URL' %>
-    <%= f.text_field :url, class: 'form-control' %>
+    <%= f.label :url, "URL" %>
+    <%= f.text_field :url, class: "form-control" %>
   </div>
   <div class="row">
     <div class="form-group col-sm-2">
-      <%= f.label :published, '出版年/掲載年' %>
-      <%= f.text_field :published, class: 'form-control'%>
+      <%= f.label :published, "出版年/掲載年" %>
+      <%= f.text_field :published, class: "form-control"%>
     </div>
     <div class="form-group col-sm-10">
-      <%= f.label :publish, '出版社/サイト名' %>
-      <%= f.text_field :publish, class: 'form-control' %>
+      <%= f.label :publish, "出版社/サイト名" %>
+      <%= f.text_field :publish, class: "form-control" %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-4">
-      <%= f.label :price, '金額' %>
-      <%= f.text_field :price, class: 'form-control' %>
+      <%= f.label :price, "金額" %>
+      <%= f.text_field :price, class: "form-control" %>
     </div>
     <div class="form-group col-sm-4">
-      <%= f.label :state, '状態' %>
+      <%= f.label :state, "状態" %>
       <div><%= f.select :state,
         [  "未読", "読中", "読了", "購入希望", ""],
-        {include_blank: '選択してください'},
-        class: 'form-control' %></div>
+        {include_blank: "選択してください"},
+        class: "form-control" %></div>
     </div>
     <div class="form-group col-sm-4">
-      <%= f.label :keyword, 'キーワード' %>
-      <%= f.text_field :keyword, class: 'form-control' %>
+      <%= f.label :keyword, "キーワード" %>
+      <%= f.text_field :keyword, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :remarks, '備考/要約' %>
-    <%= f.text_area :remarks, class: 'form-control',rows: 10 %>
+    <%= f.label :remarks, "備考/要約" %>
+    <%= f.text_area :remarks, class: "form-control",rows: 10 %>
   </div>
-  <%= f.submit '保存', class: 'btn btn-primary' %>
+  <%= f.submit "保存", class: "btn btn-primary" %>
 <% end %>
