@@ -1,11 +1,6 @@
 <table class="table text-left">
   <div class="card-header">
-    <%# if controller.kind_of?(UsersController) %>
-    <%# if controller.kind_of?(Admin::UsersController) %>
-    <!-- <h4>ユーザー詳細</h4> -->
-    <%# else %>
     <h4>マイアカウント</h4>
-    <%# end %>
   </div>
     <div class="card-body ">
       <tr>
@@ -21,10 +16,6 @@
         <td><%= @user.email %></td>
       </tr>
       <tr>
-        <th>管理者</th>
-        <td><%= @user.administrator? ? "○" : "-" %></td>
-      </tr>
-      <tr>
         <th>登録日</th>
         <td><%= @user.created_at.to_s(:datetime_jp) %></td>
       </tr>
@@ -37,8 +28,6 @@
 <% if controller.kind_of?(AccountsController) %>
   <td class="float-right">
     <%= link_to "退会", :account, method: :delete, data:{confirm: "本当に退会しますか？ "},
-    class: 'btn btn-outline-danger btn-sm float-right'%>
-    <%#= link_to "退会", @user, method: :delete, data:{confirm: "本当に退会しますか？ "},
     class: 'btn btn-outline-danger btn-sm float-right'%>
   </td>
 <% end  %>

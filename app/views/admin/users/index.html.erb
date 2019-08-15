@@ -1,6 +1,5 @@
 <h4>ユーザー一覧</h4>
 <div class="d-flex align-items-center">
-  <%#= form_with(url: :search_admin_users, method: :get, local: true) do  %>
   <%= form_with(url: search_admin_users_path, method: :get, local: true) do  %>
     <%= text_field_tag "q", params[:q] %>
     <%= submit_tag '検索', class: "btn btn-outline-info btn-sm" %> <%= link_to 'Clear', admin_users_path %>
