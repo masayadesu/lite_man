@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: %i[index search show edit update destroy]
-  before_action :set_target_user, only: %i[show search edit update destroy]
-  # before_action :authenticate_admin, except: %i[create]
-  # before_action :correct_user, only: %i[show edit update]
-
+  before_action :authenticate_user, only: %i[index show edit]
+  before_action :set_target_user, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[index search show edit update destroy]
 
   def index
@@ -11,8 +8,8 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:q]).page(params[:page])
-    render "index"
+    # @users = User.search(params[:q]).page(params[:page])
+    # render "index"
   end
 
   def show
@@ -62,7 +59,7 @@ class UsersController < ApplicationController
   def correct_user
     if @user.id != @current_user.id
       flash[:error_message] = "権限がありません"
-      redirect_to literatures_path
+      # redirect_to literatures_path
     end
   end
 end

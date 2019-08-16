@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  get "bad_request" => "home#bad_request"
+  get "forbidden" => "home#forbidden"
+  get "internal_server_error" => "home#internal_server_error"
+
 
   get "about", to: "home#about"
   root "home#top"
