@@ -25,7 +25,9 @@ class Literature < ApplicationRecord
   # scope :my_bunken, -> { where(user_id: :current_user) }
 
   validates :author,length:{maximum: 50}
-  validates :title,length:{maximum: 100}
+  validates :title,
+    presence: true,
+    length:{maximum: 100}
   validates :volume,length:{maximum: 10}
   validates :page,length:{maximum: 10}
   validates :url,length:{maximum: 100}
