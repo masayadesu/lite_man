@@ -15,5 +15,12 @@ module LiteMan
     config.exceptions_app = ->(env) do
       ErrorsController.action(:show).call(env)
     end
+    config.generators.test_framework      = :rspec
+    config.generators.system_tests        = false
+    config.generators.stylesheets         = false
+    config.generators.javascripts         = false
+    config.generators.helper              = false
+    config.generators.helper_specs        = false
+    config.generators.view_specs          = false
   end
 end
