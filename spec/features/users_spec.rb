@@ -37,7 +37,7 @@ RSpec.feature "User", type: :feature do
     expect {
       expect(page).to have_content "ログアウトしました"
       expect(page).to have_current_path "/"
-      save_and_open_page
+      
     }
   end
   scenario "会員登録を解除する" do

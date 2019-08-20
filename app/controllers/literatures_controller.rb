@@ -77,8 +77,8 @@ class LiteraturesController < ApplicationController
 
   def correct_user
     if @literature.user_id != @current_user.id
-      flash[:error_message] = "権限がありません"
-      redirect_to :root
+      flash[:error_message] = "ページがありません"
+      redirect_to :literatures
       # redirect_back
     end
   end
