@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Literature", type: :feature do
   let(:user) {FactoryBot.create(:user)}
+  # before do
+  #   user  = FactoryBot.create(:user)
+  # end
     scenario "新しい文献を作成する" do
       visit root_path
       click_link "ログイン"
