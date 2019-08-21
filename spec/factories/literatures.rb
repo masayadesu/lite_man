@@ -19,8 +19,9 @@
 #  user_id    :integer
 #
 
-FactoryBot.define do
-  factory :literature do
-    
-  end
-end
+# FactoryBot.define do
+#   factory :literature do
+#     sequense(:author) { |n| "author#{n}" }
+#     sequense(:title) { |n| "title#{n}" }
+#   end
+# end

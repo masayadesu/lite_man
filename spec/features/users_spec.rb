@@ -17,35 +17,23 @@ RSpec.feature "User", type: :feature do
     }
   end
   scenario "ログインする" do
-    visit root_path
-    click_link "ログイン"
-    fill_in "ユーザー名", with: user.name
-    fill_in "パスワード", with: user.password
-    click_button "ログイン"
+    log_in(user)
     expect {
       expect(page).to have_content "ログインしました"
       expect(page).to have_current_path "/literatures"
     }
   end
   scenario "ログアウトする" do
-    visit root_path
-    click_link "ログイン"
-    fill_in "ユーザー名", with: user.name
-    fill_in "パスワード", with: user.password
-    click_button "ログイン"
+    log_in(user)
     click_link "ログアウト"
     expect {
       expect(page).to have_content "ログアウトしました"
       expect(page).to have_current_path "/"
-      
+
     }
   end
   scenario "会員登録を解除する" do
-    visit root_path
-    click_link "ログイン"
-    fill_in "ユーザー名", with: user.name
-    fill_in "パスワード", with: user.password
-    click_button "ログイン"
+    log_in(user)
     visit account_path
     click_link "退会"
     expect {
@@ -53,4 +41,7 @@ RSpec.feature "User", type: :feature do
       expect(page).to have_current_path "/"
     }
   end
+  pending "マイアカウントにアクセスできる"
+  pending "一般ユーザーはユーザー管理ページにはアクセスできない"
+  pending "管理者ユーザーはユーザー管理ページにアクセスできる" 
 end

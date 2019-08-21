@@ -22,6 +22,5 @@ FactoryBot.define do
     password "password"
     password_confirmation "password"
     administrator "false"
-    # sequence(:use_id) { |n| "#{n}"}
   end
 end
