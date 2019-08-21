@@ -5,9 +5,9 @@ class LiteraturesController < ApplicationController
 
 
   def index
-    # @per_page ||= 10
+    per_page ||= 10
     session[:q] = nil
-    @literatures = Literature.where(user_id: @current_user).page(params[:page])
+    @literatures = Literature.where(user_id: @current_user).page(params[:page]).per(per_page)
   end
 
   def search
@@ -51,7 +51,7 @@ class LiteraturesController < ApplicationController
 
   def update
     if @literature.update(literature_params)
-      flash[:notice] = "#{@literature.title}の文献を編集しました"
+      flash[:notice] = "「#{@literature.title}」の文献を編集しました"
       redirect_to @literature
     else
       flash[:notice] = @literature
@@ -62,7 +62,7 @@ class LiteraturesController < ApplicationController
 
   def destroy
     @literature.destroy
-    redirect_to literatures_path, flash: { notice: "#{@literature.title}の文献が削除されました" }
+    redirect_to literatures_path, flash: { notice: "「#{@literature.title}」の文献が削除されました" }
   end
 
   private
@@ -79,7 +79,6 @@ class LiteraturesController < ApplicationController
     if @literature.user_id != @current_user.id
       flash[:error_message] = "ページがありません"
       redirect_to :literatures
-      # redirect_back
     end
   end
 end

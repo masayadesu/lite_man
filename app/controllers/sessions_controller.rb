@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :forbid_login_user , {only: %i[create]}
-  
+
   def login
   end
 
@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:notice] = "ログインしました"
-      redirect_to literatures_path
-      # binding.pry
+      redirect_to :literatures
     else
       flash[:error_message] = "ユーザー名またはパスワードが間違っています"
       redirect_back fallback_location: user
@@ -28,7 +27,7 @@ class SessionsController < ApplicationController
   def forbid_login_user
     if @current_user
       flash[:notice] = "すでにログインしています"
-      redirect_to literatures_path
+      redirect_to :literatures
     end
   end
 end

@@ -42,10 +42,12 @@
     </div>
     <div class="form-group col-sm-4">
       <%= f.label :state, "状態" %>
-      <div><%= f.select :state,
+      <div>
+        <%= f.select :state,
         [  "未読", "読中", "読了", "購入希望", ""],
         {include_blank: "選択してください"},
-        class: "form-control" %></div>
+        class: "form-control" %>
+      </div>
     </div>
     <div class="form-group col-sm-4">
       <%= f.label :keyword, "キーワード" %>

@@ -17,7 +17,7 @@ class PasswordsController < ApplicationController
       if @user.authenticate(current_password)
         @user.assign_attributes(account_params)
         if @user.save
-          redirect_to :account, notice: "パスワードを変更しました。"
+          redirect_to :account, notice: "パスワードを変更しました"
         else
           flash[:error_messages] = @user.errors.full_messages
           render "edit"
