@@ -1,18 +1,20 @@
+<%= render "shared/error_messages" %>
+
+<div class="form-group">
+  <%= form.label :name, 'ユーザー名' %>
+  <%= form.text_field :name, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= form.label :email, 'email' %>
+  <%= form.text_field :email, class: 'form-control' %>
+</div>
+<% unless controller.kind_of?(AccountsController) %>
   <div class="form-group">
-    <%= form.label :name, 'ユーザー名' %>
-    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.label :password, 'パスワード' %>
+    <%= form.password_field :password, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= form.label :email, 'email' %>
-    <%= form.text_field :email, class: 'form-control' %>
+    <%= form.label :password_confirmation, 'パスワード（確認）' %>
+    <%= form.password_field :password_confirmation, class: 'form-control' %>
   </div>
-  <% unless controller.kind_of?(AccountsController) %>
-    <div class="form-group">
-      <%= form.label :password, 'パスワード' %>
-      <%= form.password_field :password, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= form.label :password_confirmation, 'パスワード（確認）' %>
-      <%= form.password_field :password_confirmation, class: 'form-control' %>
-    </div>    
-  <% end %>
+<% end %>
