@@ -1,7 +1,7 @@
+<% provide(:title, "パスワードの変更") %>
 <div class="form_box  col-sm-6">
   <h2>パスワードの変更</h2>
   <div><%= link_to "マイアカウントに戻る", :account, class: 'nav-link float-right' %></div>
-  <%#= form_with model: @user, url: :password, local: true do |form| %>
   <%= form_for @user, as: "account", url: :password do |form| %>
     <div class="form-group">
       <%= form.label :current_password, '現在のパスワード' %>
