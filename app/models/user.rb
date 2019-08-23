@@ -28,8 +28,8 @@ class User < ApplicationRecord
       with: /\A[A-Za-z0-9]+\z/,
       message: 'は半角英数字で入力してください',
       allow_blank: true
-
     }
+
   validates :email,
     presence: true,
     uniqueness: { case_sensitive: true },
@@ -39,8 +39,12 @@ class User < ApplicationRecord
       allow_blank: true
     }
   # validates :password, length: { minimum: 6}
-  validates :password, length: { minimum: 6}, on: :create
-  validates :password, length: { minimum: 6}, on: :update, allow_blank: true
+  # validates :password, length: { minimum: 6}, on: :create, allow_blank: true
+  # validates :password, length: { minimum: 6}, on: :update, allow_blank: true
+  validates :password,
+    presence: true,
+    length: { minimum: 6},
+    allow_blank: true
 
   attr_accessor :current_password
   validates :password, presence: { if: :current_password }
