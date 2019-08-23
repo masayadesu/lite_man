@@ -26,16 +26,16 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      flash[:notice] = "ユーザー登録が完了しました"
-      redirect_to literatures_path
+      # flash[:notice] = "ユーザー登録が完了しました"
+      redirect_to literatures_path,notice: "ユーザー登録が完了しました。"
     else
+      flash[:user] = user
       flash[:error_messages] = user.errors.full_messages
       redirect_back fallback_location: user
-
     end
   end
 
-  def update
+  # def update
     # @user.assign_attributes(user_params)
     # if @user.save
     #   redirect_to account_path(@user), notice: "#{@user.name}さんのユーザー情報を編集しました"
@@ -43,11 +43,11 @@ class UsersController < ApplicationController
     #   flash[:error_messages] = user.errors.full_messages
     #   render "edit"
     # end
-  end
-  def destroy
+  # end
+  # def destroy
     # @user.destroy
     # redirect_to @user, notice: "ユーザーを削除しました"
-  end
+  # end
 
   private
   def user_params
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   def correct_user
     if @user.id != @current_user.id
       flash[:error_message] = "権限がありません"
-      # redirect_to literatures_path
+      redirect_to literatures_path
     end
   end
 end

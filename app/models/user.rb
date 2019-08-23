@@ -25,15 +25,18 @@ class User < ApplicationRecord
     uniqueness: true,
     length: {maximum: 20},
     format: {
-      with: /\A[a-z0-9]+\z/,
-      message: 'は小文字英数字で入力してください'
+      with: /\A[A-Za-z0-9]+\z/,
+      message: 'は半角英数字で入力してください',
+      allow_blank: true
+
     }
   validates :email,
     presence: true,
     uniqueness: { case_sensitive: true },
     length: {maximum: 50},
     format: {
-      with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+      with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
+      allow_blank: true
     }
   # validates :password, length: { minimum: 6}
   validates :password, length: { minimum: 6}, on: :create

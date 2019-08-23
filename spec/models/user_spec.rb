@@ -25,7 +25,19 @@ RSpec.describe User, type: :model do
   it "名前がなければ無効な状態であること" do
     user = FactoryBot.build(:user, name: nil)
     user.valid?
-    expect(user.errors[:name]).to include("を入力してください", "は小文字英数字で入力してください")
+    expect(user.errors[:name]).to include("を入力してください")
+  end
+
+  it "名前に全角を含まないこと" do
+    user = FactoryBot.build(:user, name: "/\A[^\x01-\x7E]+\z/")
+    user.valid?
+    expect(user.errors[:name]).to include("は半角英数字で入力してください")
+  end
+  
+  it "名前に記号を含まないこと" do
+    user = FactoryBot.build(:user, name: "/\A[-/:-@\[-~]+\z/")
+    user.valid?
+    expect(user.errors[:name]).to include("は半角英数字で入力してください")
   end
 
   it "重複した名前なら無効な状態であること" do
@@ -42,10 +54,15 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include("は20文字以内で入力してください")
   end
   it "メールアドレスがなければ無効な状態であること" do
-    # user = User.new(email: nil)
     user = FactoryBot.build(:user, email: nil)
     user.valid?
-    expect(user.errors[:email]).to include("を入力してください", "は不正な値です")
+    expect(user.errors[:email]).to include("を入力してください")
+  end
+
+  it "メールアドレスの書式が正しくなければ無効な状態であること" do
+    user = FactoryBot.build(:user, email: "passion.example.com")
+    user.valid?
+    expect(user.errors[:email]).to include("の書式が正しくありません。")
   end
 
   it "重複したメールアドレスなら無効な状態であること" do

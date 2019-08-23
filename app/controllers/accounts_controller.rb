@@ -11,14 +11,28 @@ class AccountsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @user.assign_attributes(account_params)
-    if @user.save!
+    if @user.save
       redirect_to :account, notice: "#{@user.name}さんのアカウント情報を更新しました。"
     else
-      render "edit"
+      # flash[:notice] = @user.errors.full_messages
+      flash[:error_messages] = @user.errors.full_messages
+      # binding.pry
+      redirect_to action: 'edit'
+      # render :root
+      # redirect_to :root
     end
   end
+  # flash.now[:error_messages] = @user.errors.full_messages
+  # flash[:error_messages] = @user.errors.full_messages
+  # flash[:error_message] = "flash表示される"
+  # flash[:error_messages] = @user.errors.add
+  # flash[:error_messages] = @user.errors.full_messages
+  # flash[:error_messages] = @user.errors.messages
+
+  # render "edit"
+  # render @user.errors.full_messages
+  # render @user.errors.messages
 
   def destroy
     @user.destroy

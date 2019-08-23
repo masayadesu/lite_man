@@ -31,7 +31,7 @@ class LiteraturesController < ApplicationController
   end
 
   def new
-    @literature = Literature.new(flash[:notce])
+    @literature = Literature.new(flash[:notice])
   end
 
   def edit
