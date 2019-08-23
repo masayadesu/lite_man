@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:name]).to include("は半角英数字で入力してください")
   end
-  
+
   it "名前に記号を含まないこと" do
     user = FactoryBot.build(:user, name: "/\A[-/:-@\[-~]+\z/")
     user.valid?
@@ -48,7 +48,6 @@ RSpec.describe User, type: :model do
   end
 
   it "名前は20文字以内でなければ無効な状態であること" do
-    # user = User.new(name: "#{'a'* 21}")
     user = FactoryBot.build(:user, name: "#{'a'* 21}")
     user.valid?
     expect(user.errors[:name]).to include("は20文字以内で入力してください")
@@ -79,14 +78,12 @@ RSpec.describe User, type: :model do
   end
 
   it "パスワードがなければ無効な状態であること" do
-    # user = User.new( password: nil )
     user = FactoryBot.build(:user, password: nil)
     user.valid?
     expect(user.errors[:password]).to include("を入力してください")
   end
 
   it "パスワードは6文字以上なければ無効な状態であること" do
-    # user = User.new( password: "#{'a'* 5}" )
     user = FactoryBot.build(:user, password: "#{'a'* 5}")
     user.valid?
     expect(user.errors[:password]).to include("は6文字以上で入力してください")
