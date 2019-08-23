@@ -16,7 +16,7 @@
                     keyword: "rails" , state: "読了", remarks: "WebApp作成の入門", user_id: "1")
 
   Literature.create!(author: "読書猿", title: "2013.10.01 問題解決のデッドロックを叩き壊す、とにかく考えを前に進めるための方法", volume: "", page: "",
-                    url: "https://readingmonkey.blog.fc2.com/", published: "2013-10", publish: "読書猿Classic: between / beyond readers", price: "",
+                    url: "https://readingmonkey.blog.fc2.com/blog-entry-710.html", published: "2013-10", publish: "読書猿Classic: between / beyond readers", price: "",
                     keyword: "問題解決 ＮＭ法" , state: "読了", remarks: "問題解決 ブログ", user_id: "1")
 
   Literature.create!(author: "斎藤 康毅", title: "ゼロから作るDeep Learning", volume: "", page: "320",

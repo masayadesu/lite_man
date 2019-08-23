@@ -7,12 +7,12 @@ class LiteraturesController < ApplicationController
   def index
     per_page ||= 10
     session[:q] = nil
-    @literatures = Literature.where(user_id: @current_user).page(params[:page]).per(per_page)
+    @literatures = Literature.where(user_id: @current_user).page(params[:page]).per(per_page).order(id: "ASC")
   end
 
   def search
     session[:q] = params[:q] if params[:q]
-    @literatures = Literature.where(user_id: @current_user).search(session[:q]).page(params[:page])
+    @literatures = Literature.where(user_id: @current_user).search(session[:q]).page(params[:page]).per(per_page).order(id: "ASC")
       respond_to do |format|
         format.html { render :action => "index" }
         format.csv do

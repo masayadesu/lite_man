@@ -13,11 +13,12 @@
     <%= link_to "CSV出力", search_literatures_path(format: :csv), name: "csv_output", class: "btn btn-primary" %>
   </div>
 </div>
-
-<div>全 <%= @literatures.total_count %> 件</div>
+<div>全 <%= count = @literatures.total_count %> 件</div>
 <div>
-  <%= @literatures.current_page + @literatures.offset_value %>件
-  から<%= @literatures.offset_value + @literatures.length %>件を表示しています。
+  <% unless  count == 0  %>
+    <%= @literatures.current_page + @literatures.offset_value %>件から
+    <%= @literatures.offset_value + @literatures.length %>件を表示しています。
+  <% end %>
 </div>
 
 <table class="table table-hover literatures__table">
