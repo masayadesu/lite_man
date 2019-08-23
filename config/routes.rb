@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get "forbidden" => "home#forbidden"
   get "internal_server_error" => "home#internal_server_error"
 
-
   get "about", to: "home#about"
-  root "home#top"
+
 
   resource :account, only: %i[show edit update destroy]
   resource :password, only: %i[show edit update]
@@ -36,4 +35,5 @@ Rails.application.routes.draw do
       get "search", on: :collection
     end
   end
+  root "home#top"
 end

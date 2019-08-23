@@ -7,12 +7,12 @@ class Admin::UsersController < Admin::Base
 
   def index
     # @users = User.order("id")
-    @users = User.page(params[:page]).per(20).order("id")
+    @users = User.page(params[:page]).per(10).order("id")
     # @users = User.page(params[:page]).order("id")
   end
 
   def search
-    @users = User.search(params[:q]).page(params[:page])
+    @users = User.search(params[:q]).page(params[:page]).order("id")
     render "index"
   end
 
@@ -31,8 +31,9 @@ class Admin::UsersController < Admin::Base
     user = User.new(user_params)
     if user.save
       flash[:notice] = "ユーザー登録が完了しました"
-      redirect_to admin_users_path
+      redirect_to admin_user_path(user)
     else
+      flash[:user] = user
       flash[:error_messages] = user.errors.full_messages
       redirect_back fallback_location: user
 
@@ -43,10 +44,11 @@ class Admin::UsersController < Admin::Base
     @user = User.find_by(id: params[:id])
     @user.assign_attributes(user_params)
     if @user.save
-      redirect_to admin_users_path, notice: "#{@user.name}さんのユーザー情報を編集しました"
+      redirect_to admin_user_path, notice: "#{@user.name}さんのユーザー情報を編集しました"
     else
-      flash[:error_messages] = user.errors.full_messages
-      render "edit"
+      flash[:error_messages] = @user.errors.full_messages
+      # render "edit"
+      redirect_to action: 'edit'
     end
   end
   def destroy
