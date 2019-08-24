@@ -49,7 +49,7 @@ class User < ApplicationRecord
   attr_accessor :current_password
   validates :password, presence: { if: :current_password }
 
-  paginates_per 20
+  paginates_per 10
 
   class << self
     def search(query)

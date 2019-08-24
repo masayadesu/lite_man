@@ -1,6 +1,4 @@
-<% provide(:title, "ユーザー詳細") %>
 <%= render "shared/notice_message" %>
-
 <div class="d-flex align-items-center">
   <div class="ml-auto users__linkBox">
     <td><%= link_to "一覧", admin_users_path, class: 'btn btn-outline-dark' %></td>
@@ -10,9 +8,4 @@
   </div>
 </div>
 
-<table class="table text-left">
-  <div class="card-header">
-    <h4>ユーザー詳細</h4>
-  </div>
-    <%= render "shared/account_body" %>
-</table>
+<%= render "body" %>

@@ -1,4 +1,5 @@
 <% provide(:title, "ユーザー管理ページ") %>
+
 <h4>ユーザー一覧</h4>
 <%= render "shared/notice_message" %>
 <div class="d-flex align-items-center">
@@ -11,10 +12,12 @@
   </div>
 </div>
 
-<div>全 <%= @users.total_count %> 件</div>
+<div>全 <%= count = @users.total_count %> 件</div>
 <div>
-  <%= @users.current_page + @users.offset_value %>件
-  から<%= @users.offset_value + @users.length %>件を表示しています。
+  <% unless  count == 0  %>
+    <%= @users.current_page + @users.offset_value %>件から
+    <%= @users.offset_value + @users.length %>件を表示しています。
+  <% end %>
 </div>
 
 <% if @users.present? %>

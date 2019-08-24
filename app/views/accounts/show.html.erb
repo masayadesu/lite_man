@@ -1,6 +1,18 @@
-<ul class="ml-auto float-right">
-  <li><%= link_to "アカウント情報の編集", :edit_account %></li>
-  <li><%= link_to "パスワードの変更", :edit_password %></li>
-</ul>
+<% provide(:title, "マイアカウント") %>
 
-<%= render "users/body", locals: { user: @user } %>
+<table class="table text-left">
+  <%= render "shared/notice_message" %>
+  <div class="card-header">
+    <ul class="ml-auto float-right">
+      <li><%= link_to "アカウント情報の編集", :edit_account %></li>
+      <li><%= link_to "パスワードの変更", :edit_password %></li>
+    </ul>
+    <h4>マイアカウント</h4>
+  </div>
+    <%= render "shared/account_body" %>
+</table>
+
+<td class="float-right">
+  <%= link_to "退会", :account, method: :delete, data:{confirm: "本当に退会しますか？ "},
+  class: 'btn btn-outline-danger btn-sm float-right'%>
+</td>

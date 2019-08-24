@@ -1,0 +1,29 @@
+</div>
+  <div class="card-body ">
+    <tr>
+      <th>ユーザーID</th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th>ユーザー名</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <% unless controller.kind_of?(AccountsController) %>
+      <tr>
+        <th>管理者</th>
+        <td><%= @user.administrator? ? "○" : "-" %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th>登録日</th>
+      <td><%= @user.created_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+      <th>更新日</th>
+      <td><%= @user.updated_at.to_s(:datetime_jp) %></td>
+    </tr>
+  </div>

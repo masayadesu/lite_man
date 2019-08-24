@@ -1,0 +1,6 @@
+<ul class="ml-auto float-right">
+  <li><%= link_to "アカウント情報の編集", :edit_account %></li>
+  <li><%= link_to "パスワードの変更", :edit_password %></li>
+</ul>
+
+<%= render "body", locals: { user: @user } %>

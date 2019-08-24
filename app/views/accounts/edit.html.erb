@@ -1,8 +1,8 @@
 <% provide(:title, "アカウント情報の編集") %>
+
 <div class="form_box  col-sm-6">
   <h2>アカウント情報の編集</h2>
   <%= render "shared/error_messages" %>
-  <%#= render "shared/notice_message" %>
   <div><%= link_to "マイアカウントに戻る", :account, class: 'nav-link float-right' %></div>
   <%= form_with model: @user, scope: :account, url: :account do |form| %>
     <%= render 'shared/user_form', form: form %>
