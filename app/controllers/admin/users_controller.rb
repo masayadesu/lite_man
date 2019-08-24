@@ -1,14 +1,7 @@
 class Admin::UsersController < Admin::Base
-  # before_action :authenticate_user, only: %i[index show edit update me]
-  # before_action :authenticate_admin, only: %i[index show edit update]
-  # before_action :correct_user, only: %i[show edit update]
-
-  # before_action :authenticate_admin
 
   def index
-    # @users = User.order("id")
     @users = User.page(params[:page]).per(10).order("id")
-    # @users = User.page(params[:page]).order("id")
   end
 
   def search
@@ -36,7 +29,6 @@ class Admin::UsersController < Admin::Base
       flash[:user] = user
       flash[:error_messages] = user.errors.full_messages
       redirect_back fallback_location: user
-
     end
   end
 
@@ -51,18 +43,16 @@ class Admin::UsersController < Admin::Base
       redirect_to action: 'edit'
     end
   end
+
   def destroy
     @user = User.find_by(id: params[:id])
     @user.destroy
     redirect_to admin_users_path, notice: "#{@user.name}さんのアカウントを削除しました"
   end
 
-
-
-
-
   private
   def user_params
     params.require(:user).permit(:name, :email, :administrator, :password, :password_confirmation)
   end
+
 end
