@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user
   before_action :set_target_account
+  # before_action :is_administrator_last_one, only: %i[destroy]
 
   def show
   end
@@ -19,10 +20,28 @@ class AccountsController < ApplicationController
     end
   end
 
+  # def destroy
+  #   @user.destroy
+  #   flash[:error_message] = "登録を解除しました。"
+  #   redirect_to :root
+  # end
   def destroy
-    @user.destroy
-    flash[:error_message] = "登録を解除しました。"
-    redirect_to :root
+    @user.transaction do
+      @user.destroy
+      user = User.where(administrator: "true").count
+      if user == 0
+        flash[:error_message] = "このアカウントを削除する事ができませんでした。<br>
+                                  管理者は1人以上、必要です。<br>
+                                  このアカウントを削除したい時は、他のユーザーに管理者権限を付与後に、
+                                  削除することができます。 "
+        raise ActiveRecord::Rollback
+      else
+        flash[:notice] = "#{@user.name}さんの登録を解除しました。"
+        redirect_to :root
+      end
+      return
+    end
+    redirect_to :account
   end
 
   private

@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::Base
   before_action :set_target_user, only: %i[show edit update destroy]
-  # before_action :is_administrator_last_one, only: %i[destroy]
+  before_action :is_administrator_last_one, only: %i[destroy]
 
   def index
     @users = User.page(params[:page]).per(10).order("id")
@@ -36,7 +36,7 @@ class Admin::UsersController < Admin::Base
   def update
     @user.assign_attributes(user_params)
     if @user.save
-      flash[:notice] = "#{@user.name}さんのユーザー情報を編集しました。"
+      flash[:notice] = "#{@user.name}さんのユーザー情報を編集しました"
       redirect_to admin_user_path(@user)
     else
       flash[:error_messages] = @user.errors.full_messages
@@ -47,22 +47,11 @@ class Admin::UsersController < Admin::Base
   def destroy
     @user.transaction do
       @user.destroy
-      user = User.where(administrator: "true").count
-      if user == 0
-        flash[:error_message] = "このアカウントを削除する事ができませんでした。<br>
-                                  管理者は1人以上、必要です。<br>
-                                  このアカウントを削除したい時は、他のユーザーに管理者権限を付与後に、
-                                  削除することができます。"
-        raise ActiveRecord::Rollback
-      else
-        flash[:notice] = "#{@user.name}さんのアカウントを削除しました。"
-        redirect_to :root
-      end
-      return
+
     end
+    flash[:notice] = "#{@user.name}さんのアカウントを削除しました"
     redirect_to :admin_users
   end
-
 
   private
   def user_params
@@ -72,4 +61,6 @@ class Admin::UsersController < Admin::Base
   def set_target_user
     @user = User.find(params[:id])
   end
+
+
 end
