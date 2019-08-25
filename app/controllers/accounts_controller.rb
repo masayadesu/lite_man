@@ -1,6 +1,4 @@
 class AccountsController < ApplicationController
-  # before_action :authenticate_user, only: %i[show edit ]
-  # before_action :current_user
   before_action :authenticate_user
   before_action :set_target_account
 
@@ -13,30 +11,17 @@ class AccountsController < ApplicationController
   def update
     @user.assign_attributes(account_params)
     if @user.save
-      redirect_to :account, notice: "#{@user.name}さんのアカウント情報を更新しました。"
+      flash[:notice] = "#{@user.name}さんのアカウント情報を更新しました。"
+      redirect_to :account
     else
-      # flash[:notice] = @user.errors.full_messages
       flash[:error_messages] = @user.errors.full_messages
-      # binding.pry
       redirect_to action: 'edit'
-      # render :root
-      # redirect_to :root
     end
   end
-  # flash.now[:error_messages] = @user.errors.full_messages
-  # flash[:error_messages] = @user.errors.full_messages
-  # flash[:error_message] = "flash表示される"
-  # flash[:error_messages] = @user.errors.add
-  # flash[:error_messages] = @user.errors.full_messages
-  # flash[:error_messages] = @user.errors.messages
-
-  # render "edit"
-  # render @user.errors.full_messages
-  # render @user.errors.messages
 
   def destroy
     @user.destroy
-    flash[:error_message] = "登録を解除しました"
+    flash[:error_message] = "登録を解除しました。"
     redirect_to :root
   end
 

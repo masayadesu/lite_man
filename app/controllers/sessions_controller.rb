@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    # session.delete(:per_page)
     flash[:notice] = "ログアウトしました"
     redirect_to :root
   end

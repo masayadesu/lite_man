@@ -5,7 +5,6 @@ class LiteraturesController < ApplicationController
 
 
   def index
-    # per_page ||= 10
     session[:q] = nil
     @literatures = Literature.where(user_id: @current_user).page(params[:page]).order(id: "ASC")
   end
@@ -17,21 +16,15 @@ class LiteraturesController < ApplicationController
         format.html { render :action => "index" }
         format.csv do
           send_data render_to_string, filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
-        # format.csv { render :action => "csv_output" }
         end
       end
   end
-
-  # def csv_output
-  #   @literatures = Literature.where(user_id: @current_user).search(session[:q]).page(params[:total_count])
-  #   send_data render_to_string, filename: "literatures-#{Time.now.strftime("%Y%m%d%H%M")}.csv", type: :csv
-  # end
 
   def show
   end
 
   def new
-    @literature = Literature.new(flash[:notice])
+    @literature = Literature.new(flash[:literature])
   end
 
   def edit
@@ -41,9 +34,9 @@ class LiteraturesController < ApplicationController
     literature = Literature.create(literature_params)
     if literature.save
       flash[:notice] = "文献を追加しました"
-      redirect_to literature
+      redirect_to literature_path(literature)
     else
-      flash[:notice] = literature
+      flash[:literature] = literature
       flash[:error_messages] = literature.errors.full_messages
       redirect_back fallback_location: literature
     end
@@ -54,7 +47,7 @@ class LiteraturesController < ApplicationController
       flash[:notice] = "「#{@literature.title}」の文献を編集しました"
       redirect_to @literature
     else
-      flash[:notice] = @literature
+      flash[:literature] = @literature
       flash[:error_messages] = @literature.errors.full_messages
       redirect_back fallback_location: @literature
     end
@@ -63,7 +56,7 @@ class LiteraturesController < ApplicationController
   def destroy
     @literature.destroy
     flash[:notice] = "「#{@literature.title}」の文献が削除されました"
-    redirect_to literatures_path
+    redirect_to :literatures
   end
 
   private

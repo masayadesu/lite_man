@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   end
 
   def internal_server_error
-    raise
+    # raise
   end
 
 end

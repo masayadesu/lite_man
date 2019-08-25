@@ -14,28 +14,16 @@ class ApplicationController < ActionController::Base
   rescue_from LoginRequired, with: :rescue_login_required
   rescue_from Forbidden, with: :rescue_forbidden
 
-
-
-
   private
   def current_user
     return unless session[:user_id]
     @current_user = User.find_by(id: session[:user_id])
-    # binding.pry
   end
 
   def authenticate_user
     if @current_user == nil
       flash[:error_message] = "ログインが必要です"
       redirect_to :login
-    end
-  end
-
-  def authenticate_admin
-    # raise Forbidden unless @current_member&.administrator?
-    if  !@current_member&.administrator
-      flash[:error_messages] = "権限がありません"
-      redirect_to :root
     end
   end
 
@@ -63,8 +51,5 @@ class ApplicationController < ActionController::Base
     render "errors/internal_server_error", status: 500, layout: "error",
       formats: [:html]
   end
-
-
-
 
 end

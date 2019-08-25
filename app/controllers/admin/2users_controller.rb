@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::Base
   before_action :set_target_user, only: %i[show edit update destroy]
+  before_action :authenticate_admin
 
   def index
     @users = User.page(params[:page]).per(10).order("id")
@@ -33,19 +34,20 @@ class Admin::UsersController < Admin::Base
   end
 
   def update
-    @user.assign_attributes(user_params)
-    if @user.save
-      flash[:notice] = "#{@user.name}さんのユーザー情報を編集しました"
-      redirect_to admin_user_path(@user)
+    user.assign_attributes(user_params)
+    if user.save
+      flash[:notice] = "#{user.name}さんのユーザー情報を編集しました"
+      redirect_to :admin_users
     else
-      flash[:error_messages] = @user.errors.full_messages
+      flash[:error_messages] = user.errors.full_messages
+      # render "edit"
       redirect_to action: 'edit'
     end
   end
 
   def destroy
-    @user.destroy
-    flash[:notice] = "#{@user.name}さんのアカウントを削除しました"
+    user.destroy
+    flash[:notice] = "#{user.name}さんのアカウントを削除しました"
     redirect_to :admin_users
   end
 
