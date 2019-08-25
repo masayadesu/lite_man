@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::Base
   before_action :set_target_user, only: %i[show edit update destroy]
-  # before_action :is_administrator_last_one, only: %i[destroy]
+  before_action :is_administrator_last_one?, only: %i[destroy]
 
   def index
     @users = User.page(params[:page]).per(10).order("id")
@@ -56,9 +56,7 @@ class Admin::UsersController < Admin::Base
         raise ActiveRecord::Rollback
       else
         flash[:notice] = "#{@user.name}さんのアカウントを削除しました。"
-        redirect_to :root
       end
-      return
     end
     redirect_to :admin_users
   end

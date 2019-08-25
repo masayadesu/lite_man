@@ -27,15 +27,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def is_administrator_last_one
-  #   if @user.administrator?
-  #     user = User.where(administrator: "true").count
-  #     if user == 1
-  #       flash[:error_message] = "このアカウントを削除できません。 管理者を0人にすることはできません。 "
-  #       redirect_to :account
-  #     end
-  #   end
-  # end
+  def is_administrator_last_one?
+    if @user.administrator?
+      user = User.where(administrator: "true").count
+      if user == 1
+        flash[:error_message] = "このアカウントを削除する事はできません。<br>
+                                  管理者は1人以上、必要です。<br>
+                                  このアカウントを削除したい時は、他のユーザーに管理者権限を付与後に、
+                                  削除することができます。 "
+        redirect_back(fallback_location: request.fullpath)
+      end
+    end
+  end
 
   def rescue_bad_request(exception)
     render "errors/bad_request", status: 400, layout: "error",

@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user
   before_action :set_target_account
-  # before_action :is_administrator_last_one, only: %i[destroy]
+  before_action :is_administrator_last_one?, only: %i[destroy]
 
   def show
   end
@@ -20,11 +20,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @user.destroy
-  #   flash[:error_message] = "登録を解除しました。"
-  #   redirect_to :root
-  # end
   def destroy
     @user.transaction do
       @user.destroy
