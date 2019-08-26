@@ -28,8 +28,8 @@
                     keyword: "バナナ 色調 変化 研究 レポート用" , state: "味読", remarks: "", user_id: "1")
 
   User.create!( name: "admin", email: "admin@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
-  # User.create!( name: "user", email: "user@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
-  User.create!( name: "user", email: "user@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
+  User.create!( name: "user", email: "user@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
+  # User.create!( name: "user", email: "user@gmoil.com", password: "123456", password_confirmation: "123456", administrator: true)
   (3..50).each do |i|
     # User.create!( name: "user#{i}", email: "user#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: "#{i % 5 == 0? true:false}")
     User.create!( name: "user#{i}", email: "user#{i}@gmoil.com", password: "123456", password_confirmation: "123456", administrator: false)
