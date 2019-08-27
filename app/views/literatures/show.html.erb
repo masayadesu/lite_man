@@ -1,6 +1,6 @@
 <div class="d-flex align-items-center">
   <div class="ml-auto literatures__linkBox">
-    <td><%= link_to "一覧", :literatures, class: 'btn btn-outline-dark' %></td>
+    <td><%= link_to "一覧", literatures_path(take_params), class: 'btn btn-outline-dark' %></td>
     <td><%= link_to "編集", :edit_literature, class: 'btn btn-outline-dark' %></td>
     <td><%= link_to '削除', :literature,class: 'btn btn-outline-danger ',
        method: :delete, data: { confirm: '本当に削除しますか?' } %></td>

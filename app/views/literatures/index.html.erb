@@ -7,7 +7,7 @@
   <%= form_with(url: :search_literatures, method: :get, local: true) do |f| %>
     <%= f.text_field :q %>
     <%= f.submit "検索", class: "btn btn-outline-info btn-sm" %>
-     <%= link_to "Clear", :literatures %>
+    <%= link_to "Clear", :literatures %>
   <% end %>
 
   <div class="ml-auto literatures__linkBox">
@@ -55,7 +55,7 @@
         <td><%= literature.state %></td>
         <td><%= literature.keyword.truncate(10) %></td>
         <td><%= literature.remarks.truncate(10) %></td>
-        <td><%= link_to "詳細", literature, class: "btn btn-outline-dark btn-sm" %></td>
+        <td><%= link_to "詳細", literature_path(literature, take_params), class: "btn btn-outline-dark btn-sm" %></td>
         <td><%= link_to "編集", edit_literature_path(literature), class: "btn btn-outline-dark btn-sm"%></td>
         <td><%= link_to "削除", literature, class: "btn btn-outline-danger btn-sm",
            method: :delete, data: { confirm: "「#{literature.title}」の文献を削除しますか?" } %></td>
