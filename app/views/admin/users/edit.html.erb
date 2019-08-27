@@ -1,7 +1,9 @@
 <% provide(:title, "ユーザー編集") %>
 
 <div class="form_box  col-sm-6">
+  <td><%= link_to "戻る", :back, class: 'btn btn-outline-dark float-right' %></td>
   <h2>ユーザー編集</h2>
+
   <%= render 'shared/error_messages' %>
   <%= form_with model: @user, url: admin_user_path(@user) do |form| %>
     <%= render 'shared/user_form', form: form %>
