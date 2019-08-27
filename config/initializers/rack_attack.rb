@@ -25,6 +25,11 @@ class Rack::Attack
     [ 503, {}, ['ブロック中。ログインに複数回失敗しました。時間をおいてからアクセスしてください。']]
   end
 
+  # ループバック・アドレスをsafelistにないとrspecが失敗するので有効にしておく
+  Rack::Attack.safelist('allow from localhost') do |req|
+   '127.0.0.1' == req.ip || '::1' == req.ip
+  end
+
   def self.attack?(req)
     # Your attack detection logic
     req.path == Rails.application.routes.url_helpers.login_path && req.post?
