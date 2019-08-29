@@ -1,4 +1,8 @@
 <div class="form-group">
-  <%= form.check_box :administrator %>
+  <% if @user.id == 1 %>
+    <%= form.check_box :administrator, disabled: "" %>
+  <% else %>
+    <%= form.check_box :administrator %>
+  <% end %>
   <%= form.label :administrator, "管理者"  %>
 </div>

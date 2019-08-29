@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::Base
   before_action :set_target_user, only: %i[show edit update destroy]
-  before_action :is_administrator_last_one?, only: %i[destroy]
+  before_action :first_admin?, only: %i[destroy]
 
   def index
     @users = User.page(params[:page]).per(10).order("id")
@@ -50,9 +50,7 @@ class Admin::UsersController < Admin::Base
       user = User.where(administrator: "true").count
       if user == 0
         flash[:error_message] = "このアカウントを削除する事ができませんでした。<br>
-                                  管理者は1人以上、必要です。<br>
-                                  このアカウントを削除したい時は、他のユーザーに管理者権限を付与後に、
-                                  削除することができます。"
+                                  管理者は1人以上、必要です。"
         raise ActiveRecord::Rollback
       else
         flash[:notice] = "#{@user.name}さんのアカウントを削除しました。"
