@@ -21,7 +21,7 @@ ja:
     errors:
       messages:
         wrong: が正しくありません。
-        empty: を入力してください。
+        empty: 現在のパスワードを入力してください。
         invalid: の書式が正しくありません。
   views:
     pagination:
