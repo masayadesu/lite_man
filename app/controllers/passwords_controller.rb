@@ -11,6 +11,7 @@ class PasswordsController < ApplicationController
 
   def update
     @user = current_user
+    return if @user.id == 1
     current_password = params[:account][:current_password]
     if current_password.present?
       if @user.authenticate(current_password)

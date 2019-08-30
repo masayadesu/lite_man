@@ -10,6 +10,7 @@ class AccountsController < ApplicationController
   end
 
   def update
+    return if @user.id == 1
     @user.assign_attributes(account_params)
     if @user.save
       flash[:notice] = "#{@user.name}さんのアカウント情報を更新しました。"

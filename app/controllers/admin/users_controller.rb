@@ -34,6 +34,7 @@ class Admin::UsersController < Admin::Base
   end
 
   def update
+    return if @user.id == 1
     @user.assign_attributes(user_params)
     if @user.save
       flash[:notice] = "#{@user.name}さんのユーザー情報を編集しました。"
@@ -49,7 +50,7 @@ class Admin::UsersController < Admin::Base
       @user.destroy
       user = User.where(administrator: "true").count
       if user == 0
-        flash[:error_message] = "このアカウントを削除する事ができませんでした。<br>
+        flash[:error_message] = "このユーザーを削除する事ができませんでした。<br>
                                   管理者は1人以上、必要です。"
         raise ActiveRecord::Rollback
       else

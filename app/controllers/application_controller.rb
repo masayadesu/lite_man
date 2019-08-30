@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   def first_admin?
     if @user.id == 1
-      flash[:error_message] = "このアカウントを削除する事はできません"
+      flash[:error_message] = "このユーザーを削除する事はできません"
       redirect_back(fallback_location: request.fullpath)
     end
   end
